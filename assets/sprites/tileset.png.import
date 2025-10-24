@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cikmtypgfk4or"
-path="res://.godot/imported/queen of spades-Sheet.png-474096d0adee31f59909f01a20527d38.ctex"
+uid="uid://bdk6kp6lqb44s"
+path="res://.godot/imported/tileset.png-b50fc1806457686cf91872f682d34a54.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/queen of spades-Sheet.png"
-dest_files=["res://.godot/imported/queen of spades-Sheet.png-474096d0adee31f59909f01a20527d38.ctex"]
+source_file="res://assets/sprites/tileset.png"
+dest_files=["res://.godot/imported/tileset.png-b50fc1806457686cf91872f682d34a54.ctex"]
 
 [params]
 
