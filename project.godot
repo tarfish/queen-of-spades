@@ -11,15 +11,11 @@ config_version=5
 [application]
 
 config/name="queen of spades"
-<<<<<<< HEAD
 run/main_scene="uid://bo20wm5aevdb8"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+<<<<<<<HEADrun/main_scene="uid://bo20wm5aevdb8"
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
-=======
-config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
->>>>>>> b56415139958418d4ea0615562452d6880b8d893
