@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://2euqic8mde1p"]
+[gd_scene load_steps=10 format=3 uid="uid://2euqic8mde1p"]
 
 [ext_resource type="Texture2D" uid="uid://cikmtypgfk4or" path="res://assets/sprites/queen of spades-Sheet.png" id="1_rwm0n"]
 [ext_resource type="Script" uid="uid://0nonq62y14gt" path="res://assets/scripts/player_controller.gd" id="1_s027a"]
@@ -9,7 +9,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animator/Sprite2D:region_rect")
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,20 +24,72 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animator/Sprite2D:region_rect")
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Rect2(0, 0, 16, 16)]
+"values": [Rect2(96, 0, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_4wcc8"]
+resource_name = "take_damage"
+length = 0.25
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(32, 0, 16, 16), Rect2(48, 0, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_8sknh"]
+resource_name = "movement"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.766667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(64, 0, 16, 16), Rect2(80, 0, 16, 16), Rect2(64, 0, 16, 16), Rect2(80, 0, 16, 16), Rect2(64, 0, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_0gfpk"]
+resource_name = "jump"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(96, 0, 16, 16), Rect2(112, 0, 16, 16)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4wcc8"]
 _data = {
 &"RESET": SubResource("Animation_14505"),
-&"idle": SubResource("Animation_s027a")
+&"idle": SubResource("Animation_s027a"),
+&"jump": SubResource("Animation_0gfpk"),
+&"movement": SubResource("Animation_8sknh"),
+&"take_damage": SubResource("Animation_4wcc8")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s027a"]
@@ -53,20 +105,21 @@ jump_power = 8.0
 offset = Vector2(0, -15)
 zoom = Vector2(6, 6)
 
-[node name="Animator" type="Node2D" parent="."]
+[node name="PlayerAnimator" type="Node2D" parent="."]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Animator"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerAnimator"]
 root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_4wcc8")
 }
 autoplay = "idle"
+speed_scale = 0.75
 
-[node name="Sprite2D" type="Sprite2D" parent="Animator"]
+[node name="Sprite2D" type="Sprite2D" parent="PlayerAnimator"]
 position = Vector2(0, -8)
 texture = ExtResource("1_rwm0n")
 region_enabled = true
-region_rect = Rect2(0, 0, 16, 16)
+region_rect = Rect2(96, 0, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
