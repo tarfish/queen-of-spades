@@ -1,7 +1,23 @@
-[gd_scene load_steps=10 format=3 uid="uid://2euqic8mde1p"]
+[gd_scene load_steps=11 format=3 uid="uid://2euqic8mde1p"]
 
 [ext_resource type="Texture2D" uid="uid://cikmtypgfk4or" path="res://assets/sprites/queen of spades-Sheet.png" id="1_rwm0n"]
 [ext_resource type="Script" uid="uid://0nonq62y14gt" path="res://assets/scripts/player_controller.gd" id="1_s027a"]
+[ext_resource type="Script" uid="uid://djiewir1rklkq" path="res://assets/scripts/player_animator.gd" id="2_14505"]
+
+[sub_resource type="Animation" id="Animation_14505"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(96, 0, 16, 16)]
+}
 
 [sub_resource type="Animation" id="Animation_s027a"]
 resource_name = "idle"
@@ -19,25 +35,9 @@ tracks/0/keys = {
 "values": [Rect2(0, 0, 16, 16), Rect2(16, 0, 16, 16), Rect2(0, 0, 16, 16), Rect2(16, 0, 16, 16), Rect2(16, 0, 16, 16)]
 }
 
-[sub_resource type="Animation" id="Animation_14505"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(96, 0, 16, 16)]
-}
-
-[sub_resource type="Animation" id="Animation_4wcc8"]
-resource_name = "take_damage"
+[sub_resource type="Animation" id="Animation_0gfpk"]
+resource_name = "jump"
 length = 0.25
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -48,7 +48,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Rect2(32, 0, 16, 16), Rect2(48, 0, 16, 16)]
+"values": [Rect2(96, 0, 16, 16), Rect2(112, 0, 16, 16)]
 }
 
 [sub_resource type="Animation" id="Animation_8sknh"]
@@ -67,9 +67,10 @@ tracks/0/keys = {
 "values": [Rect2(64, 0, 16, 16), Rect2(80, 0, 16, 16), Rect2(64, 0, 16, 16), Rect2(80, 0, 16, 16), Rect2(64, 0, 16, 16)]
 }
 
-[sub_resource type="Animation" id="Animation_0gfpk"]
-resource_name = "jump"
+[sub_resource type="Animation" id="Animation_4wcc8"]
+resource_name = "take_damage"
 length = 0.25
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -80,7 +81,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Rect2(96, 0, 16, 16), Rect2(112, 0, 16, 16)]
+"values": [Rect2(32, 0, 16, 16), Rect2(48, 0, 16, 16)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4wcc8"]
@@ -105,7 +106,11 @@ jump_power = 8.0
 offset = Vector2(0, -15)
 zoom = Vector2(6, 6)
 
-[node name="PlayerAnimator" type="Node2D" parent="."]
+[node name="PlayerAnimator" type="Node2D" parent="." node_paths=PackedStringArray("player_controller", "animation_player", "sprite")]
+script = ExtResource("2_14505")
+player_controller = NodePath("..")
+animation_player = NodePath("AnimationPlayer")
+sprite = NodePath("Sprite2D")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerAnimator"]
 root_node = NodePath("../..")
