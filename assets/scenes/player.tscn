@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://2euqic8mde1p"]
+
+[ext_resource type="Texture2D" uid="uid://cikmtypgfk4or" path="res://assets/sprites/queen of spades-Sheet.png" id="1_rwm0n"]
+[ext_resource type="Script" uid="uid://0nonq62y14gt" path="res://assets/scripts/player_controller.gd" id="1_s027a"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s027a"]
+radius = 3.0
+height = 14.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_s027a")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -15)
+zoom = Vector2(6, 6)
+
+[node name="Animator" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animator"]
+root_node = NodePath("../..")
+
+[node name="Sprite2D" type="Sprite2D" parent="Animator"]
+position = Vector2(0, -8)
+texture = ExtResource("1_rwm0n")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_s027a")
