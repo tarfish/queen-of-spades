@@ -4,6 +4,8 @@ class_name PlayerController
 @export var speed = 10.0
 @export var jump_power = 10.0
 @export var Jump_Buffer_Timer: float = 0.1
+@export var Coyote_Time:float = 0.1
+@onready var coyote_timer: Timer = $Coyote_Timer
 
 var speed_multiplier = 30.0
 var jump_multiplier = -30.0
@@ -19,15 +21,21 @@ var Jump_Available:bool = true
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
+		if Jump_Available:
+			if coyote_timer.is_stopped():
+				coyote_timer.start(Coyote_Time)
+			#get_tree().create_timer(Coyote_Time).timeout.connect(Coyote_Timeout)
 		velocity += get_gravity() * delta
 	else:
 		Jump_Available = true
+		coyote_timer.stop()
 		if Jump_Buffer:
 			Jump()
 			Jump_Buffer = false
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and Jump_Available:
+		Jump_Available = false
 		if Jump_Available:
 			Jump()
 		else:
@@ -50,3 +58,6 @@ func Jump()->void:
 	
 func on_jump_buffer_timeout()->void:
 	Jump_Buffer = false
+	
+func Coyote_Timeout():
+	Jump_Available = false

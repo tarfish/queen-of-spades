@@ -129,7 +129,3 @@ region_rect = Rect2(96, 0, 16, 16)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_s027a")
-
-[node name="Coyote_Timer" type="Timer" parent="."]
-
-[connection signal="timeout" from="Coyote_Timer" to="." method="Coyote_Timeout"]
