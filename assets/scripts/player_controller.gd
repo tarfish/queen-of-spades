@@ -4,47 +4,39 @@ class_name PlayerController
 @export var speed = 10.0
 @export var jump_power = 10.0
 @export var Jump_Buffer_Timer: float = 0.1
-@export var Coyote_Time:float = 0.1
-@onready var coyote_timer: Timer = $Coyote_Timer
+@export var Coyote_Time: float = 0.5
 
 var speed_multiplier = 30.0
 var jump_multiplier = -30.0
 var direction = 0
-var Jump_Buffer:bool = false
-var Jump_Available:bool = true
-
-
-#const SPEED = 300.0
-#const JUMP_VELOCITY = -400.0
+var Jump_Buffer: bool = false
+var Jump_Available: bool = true
 
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	# Add the gravity
 	if not is_on_floor():
 		if Jump_Available:
-			if coyote_timer.is_stopped():
-				coyote_timer.start(Coyote_Time)
-			#get_tree().create_timer(Coyote_Time).timeout.connect(Coyote_Timeout)
+			get_tree().create_timer(Coyote_Time).timeout.connect(Coyote_Timeout)
 		velocity += get_gravity() * delta
 	else:
 		Jump_Available = true
-		coyote_timer.stop()
+
 		if Jump_Buffer:
 			Jump()
 			Jump_Buffer = false
 
-	# Handle jump.
+	# Handle jump
 	if Input.is_action_just_pressed("jump") and Jump_Available:
 		Jump_Available = false
-		if Jump_Available:
-			Jump()
-		else:
-			Jump_Buffer = true
-			get_tree().create_timer(Jump_Buffer_Timer).timeout.connect(on_jump_buffer_timeout)
+		Jump()
+	else:
+		Jump_Buffer = true
+		get_tree().create_timer(Jump_Buffer_Timer).timeout.connect(on_jump_buffer_timeout)
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	# Handle movement
 	direction = Input.get_axis("move_left", "move_right")
+
 	if direction:
 		velocity.x = direction * speed * speed_multiplier
 	else:
@@ -52,12 +44,15 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-func Jump()->void:
+
+func Jump() -> void:
 	velocity.y = jump_power * jump_multiplier
 	Jump_Available = false
-	
-func on_jump_buffer_timeout()->void:
+
+
+func on_jump_buffer_timeout() -> void:
 	Jump_Buffer = false
-	
-func Coyote_Timeout():
+
+
+func Coyote_Timeout() -> void:
 	Jump_Available = false
