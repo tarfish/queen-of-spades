@@ -99,9 +99,8 @@ height = 14.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_s027a")
-speed = 5.0
-jump_power = 6.0
 Coyote_Time = 0.1
+High_jump_time = 0.1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -15)

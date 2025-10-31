@@ -1,16 +1,18 @@
 extends CharacterBody2D
 class_name PlayerController
 
-@export var speed = 10.0
-@export var jump_power = 10.0
+@export var speed = 5.0
+@export var jump_power = 6
 @export var Jump_Buffer_Timer: float = 0.1
 @export var Coyote_Time: float = 0.5
+@export var High_jump_time: float = 0.2
 
 var speed_multiplier = 30.0
 var jump_multiplier = -30.0
 var direction = 0
 var Jump_Buffer: bool = false
 var Jump_Available: bool = true
+var Jump_jump_timer = 0
 
 
 func _physics_process(delta: float) -> void:
@@ -27,13 +29,21 @@ func _physics_process(delta: float) -> void:
 			Jump_Buffer = false
 
 	# Handle jump
-	if Input.is_action_just_pressed("jump") and Jump_Available:
-		Jump_Available = false
-		Jump()
+	if Input.is_action_just_pressed("jump"):
+		if Jump_Available:
+			Jump_Available = false
+			Jump()
+			Jump_jump_timer = High_jump_time
+		else:
+			Jump_Buffer = true
+			get_tree().create_timer(Jump_Buffer_Timer).timeout.connect(on_jump_buffer_timeout)
+	
+	if Input.is_action_pressed("jump"):
+		if Jump_jump_timer > 0:
+			velocity -= get_gravity() * delta * 0.5
+			Jump_jump_timer -= delta
 	else:
-		Jump_Buffer = true
-		get_tree().create_timer(Jump_Buffer_Timer).timeout.connect(on_jump_buffer_timeout)
-
+		Jump_jump_timer = 0
 	# Handle movement
 	direction = Input.get_axis("move_left", "move_right")
 

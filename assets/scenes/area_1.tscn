@@ -335,3 +335,4 @@ tile_set = SubResource("TileSet_yyir1")
 
 [node name="Player" parent="." instance=ExtResource("2_0ue7q")]
 position = Vector2(-1, 0)
+jump_power = 6
