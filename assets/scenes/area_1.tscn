@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://bo20wm5aevdb8"]
+[gd_scene load_steps=8 format=4 uid="uid://bo20wm5aevdb8"]
 
 [ext_resource type="Texture2D" uid="uid://c4dq4ra0fa14p" path="res://assets/sprites/tileset(oneway too).png" id="1_1l7dx"]
 [ext_resource type="PackedScene" uid="uid://2euqic8mde1p" path="res://assets/scenes/player.tscn" id="2_0ue7q"]
 [ext_resource type="Texture2D" uid="uid://dnbk4xf7rvebw" path="res://assets/sprites/health.png" id="3_yyir1"]
+[ext_resource type="PackedScene" uid="uid://do5kcdy8mtr4r" path="res://assets/scenes/king.tscn" id="4_tbje5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0ue7q"]
 texture = ExtResource("1_1l7dx")
@@ -386,3 +387,5 @@ texture_filter = 1
 layout_mode = 2
 texture = ExtResource("3_yyir1")
 expand_mode = 2
+
+[node name="RigidBody2D" parent="." instance=ExtResource("4_tbje5")]

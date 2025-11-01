@@ -104,7 +104,7 @@ High_jump_time = 0.1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -15)
-zoom = Vector2(5, 5)
+zoom = Vector2(6, 6)
 
 [node name="PlayerAnimator" type="Node2D" parent="." node_paths=PackedStringArray("player_controller", "animation_player", "sprite")]
 script = ExtResource("2_14505")
