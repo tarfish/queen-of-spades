@@ -390,3 +390,6 @@ expand_mode = 2
 
 [node name="crawler" parent="." instance=ExtResource("4_tbje5")]
 position = Vector2(38, -24)
+speed = 50
+chase_speed = 150
+acceleration = 300
