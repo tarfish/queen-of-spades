@@ -44,7 +44,7 @@ move_right={
 
 [physics]
 
-2d/default_gravity=100.0
+2d/physics_engine="GodotPhysics2D"
 
 [rendering]
 
