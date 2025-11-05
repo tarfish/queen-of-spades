@@ -95,8 +95,3 @@ func handle_gravity(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	current_state = states.wander
-
-func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
-	if body.is_in_group("player"):
-		body.reduce_health()
-		print (body.health)

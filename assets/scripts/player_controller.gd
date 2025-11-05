@@ -13,7 +13,7 @@ var direction = 0
 var Jump_Buffer: bool = false
 var Jump_Available: bool = true
 var Jump_jump_timer = 0
-
+var health: float = 100.0
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity
@@ -54,15 +54,15 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-
 func Jump() -> void:
 	velocity.y = jump_power * jump_multiplier
 	Jump_Available = false
 
-
 func on_jump_buffer_timeout() -> void:
 	Jump_Buffer = false
 
-
 func Coyote_Timeout() -> void:
 	Jump_Available = false
+
+func reduce_health() -> void:
+	health -= 20
