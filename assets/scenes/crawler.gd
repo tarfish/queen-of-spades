@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 @export var player: CharacterBody2D
 @export var speed: int = 50
-@export var chase_speed: int = 150
-@export var acceleration: int = 300
+@export var chase_speed: int = 100
+@export var acceleration: int = -75
 
 @onready var sprite: AnimatedSprite2D = $sprite
 @onready var raycast: RayCast2D = $sprite/RayCast2D
@@ -21,8 +21,9 @@ enum states {
 var current_state = states.wander
 
 func _ready():
-	left_bounds = self.position + Vector2(-125,0)
-	right_bounds = self.position + Vector2(125,0)
+	left_bounds = self.position + Vector2(-25,0)
+	right_bounds = self.position + Vector2(25,0)
+	
 func _physics_process(delta: float) -> void:
 	handle_gravity(delta)
 	handle_movement(delta)
@@ -60,23 +61,30 @@ func change_direction() -> void:
 		if sprite.flip_h:
 			if self.position.x <= right_bounds.x:
 				direction = Vector2(1,0)
+				acceleration = -100
 			else:
 				sprite.flip_h = false
-				raycast.target_position = Vector2(-125,0)
-		if self.position.x >= left_bounds.x:
-			direction = Vector2(1,0)
+				raycast.target_position = Vector2(-25,0)
+				acceleration = 100
 		else:
-			sprite.flip_h = true
-			raycast.target_position = Vector2(125,0)
+			if self.position.x >= left_bounds.x:
+				direction = Vector2(1,0)
+				acceleration = -100
+			else:
+				sprite.flip_h = true
+				raycast.target_position = Vector2(25,0)
+				acceleration = 100
 	else:
 		direction = (player.position - self.position).normalized()
 		direction = sign(direction)
 		if direction.x == 1:
 			sprite.flip_h = true
-			raycast.target_position = Vector2(125,0)
+			raycast.target_position = Vector2(25,0)
+			acceleration = -100
 		else:
 			sprite.flip_h = false
-			raycast.target_position = Vector2(-125,0)
+			raycast.target_position = Vector2(-25,0)
+			acceleration = 100
 			
 func handle_gravity(delta: float) -> void:
 	if not is_on_floor():

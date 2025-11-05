@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://br1c0ruslukan"]
+[gd_scene load_steps=8 format=3 uid="uid://br1c0ruslukan"]
 
 [ext_resource type="Texture2D" uid="uid://co708lr0xdl7o" path="res://assets/sprites/tileset(oneway too).png" id="1_1l7dx"]
 [ext_resource type="PackedScene" uid="uid://2euqic8mde1p" path="res://assets/scenes/player.tscn" id="2_0ue7q"]
@@ -330,11 +330,10 @@ position = Vector2(-1, 0)
 tile_set = SubResource("TileSet_yyir1")
 format = 2
 layer_0/name = "one_way"
-layer_0/tile_data = PackedInt32Array(2, 131072, 6, -65534, 131072, 4, 1, 65536, 6, -65535, 65536, 4, 0, 65536, 6, -65536, 65536, 4, 65535, 65536, 6, -1, 65536, 4, 65534, 0, 6, -2, 0, 4)
 layer_1/name = "ground"
+layer_1/tile_data = PackedInt32Array(-8, 0, 1, -7, 262144, 1, -6, 131072, 0, 65530, 131072, 1, 131066, 262144, 1, 131067, 65536, 0, 131068, 65536, 0, 131069, 65536, 0, 131070, 65536, 0, 131071, 131072, 0, 196607, 262144, 1, 131072, 65536, 0, 131073, 65536, 0, 131074, 65536, 0, 131075, 65536, 0, 131076, 327680, 1, 65540, 0, 0, 65541, 65536, 0, 6, 0, 0, 65542, 327680, 1, 7, 65536, 0, 8, 65536, 0, 9, 65536, 0, -131069, 0, 3, -131068, 65536, 3, -131067, 131072, 3, -131076, 0, 3, -131075, 65536, 3, -131074, 65536, 3, -131073, 65536, 3, -196608, 131072, 3, 65528, 0, 1, 65529, 65536, 1, 131065, 65536, 1, 196601, 65536, 1, 196602, 65536, 1, 196603, 65536, 1, 196604, 65536, 1, 196605, 65536, 1, 196606, 65536, 1, 131064, 0, 1, 196600, 0, 1, 262136, 0, 2, 262137, 65536, 2, 262138, 65536, 2, 262139, 65536, 2, 262140, 65536, 2, 262141, 65536, 2, 262142, 65536, 2, 262143, 65536, 2, 196608, 65536, 2, 196609, 65536, 2, 196610, 65536, 2, 196611, 65536, 2, 196612, 65536, 2, 196613, 65536, 2, 196614, 65536, 2, 131078, 65536, 1, 65543, 65536, 1, 65544, 65536, 1, 196615, 65536, 2, 131079, 65536, 1, 131080, 65536, 1, 131081, 65536, 1, 131082, 65536, 1, 65546, 65536, 1, 65545, 65536, 1, 196617, 65536, 2, 196618, 65536, 2, 196619, 131072, 2, 131083, 131072, 1, 65547, 131072, 1, 11, 131072, 1, 10, 327680, 1, -65526, 0, 1, -65525, 131072, 1, -131061, 131072, 1, -131062, 0, 1, -196598, 0, 0, -196597, 131072, 0, -65544, 0, 1, -65543, 131072, 1, -131079, 131072, 1, -196615, 131072, 1, -196616, 0, 1, -131080, 0, 1, -262152, 0, 0, -262151, 131072, 0, 196616, 65536, 2, 131077, 65536, 1)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="TileMap"]
-tile_map_data = PackedByteArray("AAAHAAEAAAACAAIAAAAHAAAAAAACAAAAAAAGAAEAAAABAAIAAAAGAAAAAAABAAAAAAAFAAEAAAABAAIAAAAFAAAAAAABAAAAAAAEAAEAAAABAAIAAAAEAAAAAAABAAAAAAADAAEAAAABAAIAAAADAAAAAAABAAAAAAACAAEAAAABAAIAAAACAAAAAAABAAAAAAABAAEAAAABAAIAAAABAAAAAAABAAAAAAAAAAEAAAABAAIAAAAAAAAAAAABAAAAAAD//wEAAAABAAIAAAD//wAAAAABAAAAAAD+/wEAAAABAAIAAAD+/wAAAAABAAAAAAD9/wEAAAABAAIAAAD9/wAAAAABAAAAAAD8/wEAAAABAAIAAAD8/wAAAAABAAAAAAD7/wEAAAABAAIAAAD7/wAAAAABAAAAAAD6/wEAAAABAAIAAAD6/wAAAAABAAAAAAD5/wEAAAABAAIAAAD5/wAAAAABAAAAAAD4/wEAAAABAAIAAAD4/wAAAAABAAAAAAD3/wEAAAAAAAIAAAD3/wAAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_yyir1")
 
 [node name="Player" parent="." instance=ExtResource("2_0ue7q")]
@@ -388,5 +387,7 @@ layout_mode = 2
 texture = ExtResource("3_yyir1")
 expand_mode = 2
 
-[node name="crawler" parent="." instance=ExtResource("4_tbje5")]
-position = Vector2(38, -24)
+[node name="crawler" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_tbje5")]
+texture_filter = 1
+position = Vector2(44, 5)
+player = NodePath("../Player")
