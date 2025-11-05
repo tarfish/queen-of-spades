@@ -15,6 +15,12 @@ var Jump_Available: bool = true
 var Jump_jump_timer = 0
 var health: float = 100.0
 
+@onready var heart1 = $UI/Hearts/HBoxContainer/Heart
+@onready var heart2 = $UI/Hearts/HBoxContainer/Heart2
+@onready var heart3 = $UI/Hearts/HBoxContainer/Heart3
+@onready var heart4 = $UI/Hearts/HBoxContainer/Heart4
+@onready var heart5 = $UI/Hearts/HBoxContainer/Heart5
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity
 	if not is_on_floor():
@@ -66,3 +72,13 @@ func Coyote_Timeout() -> void:
 
 func reduce_health() -> void:
 	health -= 20
+	if health == 80:
+		heart1.hide()
+	elif health == 60:
+		heart2.hide()
+	elif health == 40:
+		heart3.hide()
+	elif health == 20:
+		heart4.hide()
+	elif health == 0:
+		heart5.hide()

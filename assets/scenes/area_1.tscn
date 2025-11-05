@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://br1c0ruslukan"]
+[gd_scene load_steps=7 format=3 uid="uid://br1c0ruslukan"]
 
 [ext_resource type="Texture2D" uid="uid://co708lr0xdl7o" path="res://assets/sprites/tileset(oneway too).png" id="1_1l7dx"]
 [ext_resource type="Script" uid="uid://blbxkif63jqdv" path="res://assets/scripts/health_test.gd" id="1_5hcxr"]
 [ext_resource type="PackedScene" uid="uid://2euqic8mde1p" path="res://assets/scenes/player.tscn" id="2_0ue7q"]
-[ext_resource type="Texture2D" uid="uid://d3xn545gwwxrd" path="res://assets/sprites/health.png" id="3_yyir1"]
 [ext_resource type="PackedScene" uid="uid://55glsktgqkbu" path="res://assets/scenes/crawler.tscn" id="4_tbje5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0ue7q"]
@@ -322,8 +321,6 @@ terrain_set_0/terrain_1/name = "ground"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_0ue7q")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yyir1"]
-
 [node name="area1" type="Node2D"]
 script = ExtResource("1_5hcxr")
 
@@ -340,57 +337,6 @@ tile_set = SubResource("TileSet_yyir1")
 
 [node name="Player" parent="." instance=ExtResource("2_0ue7q")]
 position = Vector2(-1, 0)
-speed = 5.0
-jump_power = 6
-Jump_Buffer_Timer = 0.1
-
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="Hearts" type="Panel" parent="UI"]
-anchors_preset = -1
-anchor_left = 0.00954861
-anchor_top = 0.0169753
-anchor_right = 0.331597
-anchor_bottom = 0.12963
-theme_override_styles/panel = SubResource("StyleBoxEmpty_yyir1")
-metadata/_edit_use_anchors_ = true
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Hearts"]
-layout_mode = 0
-offset_top = 2.0
-offset_right = 389.0
-offset_bottom = 64.0
-alignment = 1
-
-[node name="Heart" type="TextureRect" parent="UI/Hearts/HBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-texture = ExtResource("3_yyir1")
-expand_mode = 2
-
-[node name="Heart2" type="TextureRect" parent="UI/Hearts/HBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-texture = ExtResource("3_yyir1")
-expand_mode = 2
-
-[node name="Heart3" type="TextureRect" parent="UI/Hearts/HBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-texture = ExtResource("3_yyir1")
-expand_mode = 2
-
-[node name="Heart4" type="TextureRect" parent="UI/Hearts/HBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-texture = ExtResource("3_yyir1")
-expand_mode = 2
-
-[node name="Heart5" type="TextureRect" parent="UI/Hearts/HBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-texture = ExtResource("3_yyir1")
-expand_mode = 2
 
 [node name="crawler" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_tbje5")]
 texture_filter = 1
