@@ -22,7 +22,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_4wcc8"]
 resource_name = "take_damage"
-length = 0.5
+length = 0.75
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -120,7 +120,6 @@ root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_4wcc8")
 }
-autoplay = "hurt"
 speed_scale = 0.75
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerAnimator"]

@@ -74,14 +74,18 @@ func Coyote_Timeout() -> void:
 func reduce_health() -> void:
 	health -= 20
 	print ("hurt")
-	animationplayer.play("hurt")
 	if health == 80:
 		heart1.hide()
+		animationplayer.play("hurt")
 	elif health == 60:
 		heart2.hide()
+		animationplayer.play("hurt")
 	elif health == 40:
 		heart3.hide()
+		animationplayer.play("hurt")
 	elif health == 20:
 		heart4.hide()
+		animationplayer.play("hurt")
 	elif health == 0:
 		heart5.hide()
+		animationplayer.play("hurt")

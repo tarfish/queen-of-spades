@@ -4,6 +4,7 @@ extends Node2D
 @export var animation_player : AnimationPlayer
 @export var sprite : Sprite2D
 
+
 func _process(delta):
 	#for flipping
 	if player_controller.direction == 1:
@@ -16,7 +17,7 @@ func _process(delta):
 		animation_player.play("movement")
 		print("move")
 	#idle animation
-	else:
+	elif not animation_player.is_playing():
 		animation_player.play("idle")
 		print("idle")
 	if abs(player_controller.velocity.y) < 0.0:
