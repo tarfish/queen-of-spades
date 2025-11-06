@@ -75,7 +75,6 @@ func reduce_health() -> void:
 	health -= 20
 	print ("hurt")
 	animationplayer.play("hurt")
-	await animationplayer.animation_finished
 	if health == 80:
 		heart1.hide()
 	elif health == 60:

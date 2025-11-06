@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://br1c0ruslukan"]
+[gd_scene load_steps=12 format=3 uid="uid://br1c0ruslukan"]
 
 [ext_resource type="Texture2D" uid="uid://co708lr0xdl7o" path="res://assets/sprites/tileset(oneway too).png" id="1_1l7dx"]
 [ext_resource type="Script" uid="uid://blbxkif63jqdv" path="res://assets/scripts/health_test.gd" id="1_5hcxr"]
@@ -321,6 +321,33 @@ terrain_set_0/terrain_1/name = "ground"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_0ue7q")
 
+[sub_resource type="Curve" id="Curve_tbje5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.918877, 0.247566), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_5hcxr"]
+curve = SubResource("Curve_tbje5")
+
+[sub_resource type="Gradient" id="Gradient_tbje5"]
+offsets = PackedFloat32Array(0.462069, 0.606897)
+colors = PackedColorArray(1, 1, 1, 0.584314, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5hcxr"]
+gradient = SubResource("Gradient_tbje5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tbje5"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(500, 0, 1)
+gravity = Vector3(45, 98, 0)
+scale_max = 2.0
+color_ramp = SubResource("GradientTexture1D_5hcxr")
+alpha_curve = SubResource("CurveTexture_5hcxr")
+turbulence_enabled = true
+turbulence_noise_speed_random = 0.0
+turbulence_influence_min = 0.02
+turbulence_influence_max = 0.08
+
 [node name="area1" type="Node2D"]
 script = ExtResource("1_5hcxr")
 
@@ -345,3 +372,10 @@ player = NodePath("../Player")
 
 [node name="crawler2" parent="." instance=ExtResource("4_tbje5")]
 position = Vector2(-46, -3)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, -120)
+amount = 200
+lifetime = 10.0
+preprocess = 30.0
+process_material = SubResource("ParticleProcessMaterial_tbje5")
