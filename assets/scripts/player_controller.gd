@@ -20,6 +20,7 @@ var health: float = 100.0
 @onready var heart3 = $UI/Hearts/HBoxContainer/Heart3
 @onready var heart4 = $UI/Hearts/HBoxContainer/Heart4
 @onready var heart5 = $UI/Hearts/HBoxContainer/Heart5
+@onready var animationplayer = $PlayerAnimator/AnimationPlayer
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity
@@ -72,6 +73,9 @@ func Coyote_Timeout() -> void:
 
 func reduce_health() -> void:
 	health -= 20
+	print ("hurt")
+	animationplayer.play("hurt")
+	await animationplayer.animation_finished
 	if health == 80:
 		heart1.hide()
 	elif health == 60:
