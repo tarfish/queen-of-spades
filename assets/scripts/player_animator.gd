@@ -4,7 +4,6 @@ extends Node2D
 @export var animation_player : AnimationPlayer
 @export var sprite : Sprite2D
 
-
 func _process(delta):
 	#for flipping
 	if player_controller.direction == 1:

@@ -7,13 +7,13 @@ class_name PlayerController
 @export var Coyote_Time: float = 0.5
 @export var High_jump_time: float = 0.2
 
-var speed_multiplier = 30.0
-var jump_multiplier = -30.0
+var speed_multiplier = 27.0
+var jump_multiplier = -33.0
 var direction = 0
 var Jump_Buffer: bool = false
 var Jump_Available: bool = true
 var Jump_jump_timer = 0
-var health: float = 100.0
+var health = 100
 
 @onready var heart1 = $UI/Hearts/HBoxContainer/Heart
 @onready var heart2 = $UI/Hearts/HBoxContainer/Heart2
@@ -21,6 +21,8 @@ var health: float = 100.0
 @onready var heart4 = $UI/Hearts/HBoxContainer/Heart4
 @onready var heart5 = $UI/Hearts/HBoxContainer/Heart5
 @onready var animationplayer = $PlayerAnimator/AnimationPlayer
+@onready var hurttimer = $Timer
+@onready var camera = $Camera2D
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity
@@ -73,19 +75,21 @@ func Coyote_Timeout() -> void:
 
 func reduce_health() -> void:
 	health -= 20
+	camera.screen_shake(8, 10)
 	print ("hurt")
+	get_tree().create_timer(0.5).timeout.connect(_on_timer_timeout)
+	print ("hurt_2")
+	animationplayer.play("hurt")
 	if health == 80:
 		heart1.hide()
-		animationplayer.play("hurt")
 	elif health == 60:
 		heart2.hide()
-		animationplayer.play("hurt")
 	elif health == 40:
 		heart3.hide()
-		animationplayer.play("hurt")
 	elif health == 20:
 		heart4.hide()
-		animationplayer.play("hurt")
 	elif health == 0:
 		heart5.hide()
-		animationplayer.play("hurt")
+
+func _on_timer_timeout() -> void:
+	animationplayer.play("idle")
