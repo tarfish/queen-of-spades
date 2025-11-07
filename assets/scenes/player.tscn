@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://2euqic8mde1p"]
+[gd_scene load_steps=14 format=3 uid="uid://2euqic8mde1p"]
 
 [ext_resource type="Texture2D" uid="uid://bgr4jqe5qadf8" path="res://assets/sprites/queen of spades-Sheet.png" id="1_rwm0n"]
 [ext_resource type="Script" uid="uid://0nonq62y14gt" path="res://assets/scripts/player_controller.gd" id="1_s027a"]
+[ext_resource type="Script" uid="uid://c6tjmoiv4kqtu" path="res://assets/scripts/camera_2d.gd" id="2_8sknh"]
 [ext_resource type="Script" uid="uid://djiewir1rklkq" path="res://assets/scripts/player_animator.gd" id="2_14505"]
 [ext_resource type="Texture2D" uid="uid://d3xn545gwwxrd" path="res://assets/sprites/health.png" id="4_4wcc8"]
 
@@ -108,6 +109,7 @@ High_jump_time = 0.1
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -15)
 zoom = Vector2(6, 6)
+script = ExtResource("2_8sknh")
 
 [node name="PlayerAnimator" type="Node2D" parent="." node_paths=PackedStringArray("player_controller", "animation_player", "sprite")]
 script = ExtResource("2_14505")

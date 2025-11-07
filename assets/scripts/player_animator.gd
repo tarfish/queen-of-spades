@@ -17,7 +17,7 @@ func _process(delta):
 		animation_player.play("movement")
 		print("move")
 	#idle animation
-	elif not animation_player.is_playing():
+	elif abs(player_controller.velocity.x) == 0.0:
 		animation_player.play("idle")
 		print("idle")
 	if abs(player_controller.velocity.y) < 0.0:
