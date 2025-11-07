@@ -75,7 +75,7 @@ func Coyote_Timeout() -> void:
 
 func reduce_health() -> void:
 	health -= 20
-	camera.screen_shake(8, 10)
+	camera.screen_shake(6, 0.1)
 	print ("hurt")
 	get_tree().create_timer(0.5).timeout.connect(_on_timer_timeout)
 	print ("hurt_2")

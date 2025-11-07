@@ -107,7 +107,7 @@ Coyote_Time = 0.1
 High_jump_time = 0.1
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(6, 6)
+zoom = Vector2(5, 5)
 script = ExtResource("2_8sknh")
 
 [node name="PlayerAnimator" type="Node2D" parent="." node_paths=PackedStringArray("player_controller", "animation_player", "sprite")]

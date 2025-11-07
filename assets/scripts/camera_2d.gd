@@ -6,7 +6,7 @@ var active_shake_time: float = 0.0
 var shake_decay: float = 5.0
 
 var shake_time: float = 0.0
-var shake_time_speed: float = 0.0
+var shake_time_speed: float = 60.0
 
 var noise = FastNoiseLite.new()
 
@@ -23,6 +23,7 @@ func _physics_process(delta: float) -> void:
 		shake_intensity = max(shake_intensity - shake_decay * delta, 0)
 	else:
 		offset = lerp(offset, Vector2.ZERO, 10.5 * delta)
+		
 func screen_shake(intensity: int, time: float):
 	randomize()
 	noise.seed = randi()

@@ -19,6 +19,6 @@ func _process(delta):
 	elif abs(player_controller.velocity.x) == 0.0:
 		animation_player.play("idle")
 		print("idle")
-	if abs(player_controller.velocity.y) < 0.0:
+	if abs(player_controller.velocity.y) > 0.0:
 		animation_player.play("jump")
 		print("jump")
