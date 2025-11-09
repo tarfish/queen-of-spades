@@ -6,6 +6,8 @@ class_name PlayerController
 @export var Jump_Buffer_Timer: float = 0.1
 @export var Coyote_Time: float = 0.5
 @export var High_jump_time: float = 0.2
+@export var min_knockback := 100
+@export var slow_knockback := 1.1
 
 var speed_multiplier = 27.0
 var jump_multiplier = -33.0
@@ -14,6 +16,7 @@ var Jump_Buffer: bool = false
 var Jump_Available: bool = true
 var Jump_jump_timer = 0
 var health = 100
+var knockback
 
 @onready var heart1 = $UI/Hearts/HBoxContainer/Heart
 @onready var heart2 = $UI/Hearts/HBoxContainer/Heart2
@@ -60,6 +63,12 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * speed * speed_multiplier
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed * speed_multiplier)
+		
+#	if knockback.length() > min_knockback:
+#		knockback /= slow_knockback
+#		velocity = knockback
+#		move_and_slide()
+#z		return
 
 	move_and_slide()
 
@@ -90,6 +99,7 @@ func reduce_health() -> void:
 		heart4.hide()
 	elif health == 0:
 		heart5.hide()
+		get_tree().reload_current_scene()
 
 func _on_timer_timeout() -> void:
 	animationplayer.play("idle")

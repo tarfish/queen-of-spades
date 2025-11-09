@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var speed: int = 50
 @export var chase_speed: int = 50
 @export var acceleration: int = -30
+@export var knockback := 1000
 
 @onready var sprite: AnimatedSprite2D = $sprite
 @onready var raycast: RayCast2D = $sprite/RayCast2D
@@ -100,4 +101,4 @@ func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
 	if body.is_in_group("player"):
 		body.reduce_health()
 		print (body.health)
-		await get_tree().create_timer(2.0).timeout
+		body.knockback = position.direction_to(body.position) * knockback
