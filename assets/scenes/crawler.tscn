@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r0k6r"]
 radius = 2.0
-height = 10.0
+height = 14.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v0qg8"]
 atlas = ExtResource("1_r0k6r")
@@ -38,7 +38,7 @@ script = ExtResource("1_v0qg8")
 speed = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 6)
+position = Vector2(1, 6)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_r0k6r")
 
@@ -59,6 +59,7 @@ one_shot = true
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2(0, 3)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_v0qg8")

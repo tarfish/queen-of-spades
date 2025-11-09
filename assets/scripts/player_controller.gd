@@ -16,7 +16,7 @@ var Jump_Buffer: bool = false
 var Jump_Available: bool = true
 var Jump_jump_timer = 0
 var health = 100
-var knockback
+var knockback = Vector2(150,150)
 
 @onready var heart1 = $UI/Hearts/HBoxContainer/Heart
 @onready var heart2 = $UI/Hearts/HBoxContainer/Heart2
@@ -64,11 +64,11 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed * speed_multiplier)
 		
-#	if knockback.length() > min_knockback:
-#		knockback /= slow_knockback
-#		velocity = knockback
-#		move_and_slide()
-#z		return
+	if knockback.length() > min_knockback:
+		knockback /= slow_knockback
+		velocity = knockback
+		move_and_slide()
+		return
 
 	move_and_slide()
 

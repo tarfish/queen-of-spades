@@ -364,7 +364,7 @@ layer_1/tile_data = PackedInt32Array(-8, 0, 1, -7, 262144, 1, -6, 131072, 0, 655
 tile_set = SubResource("TileSet_yyir1")
 
 [node name="Player" parent="." instance=ExtResource("2_0ue7q")]
-position = Vector2(-1, 0)
+position = Vector2(-16, -16)
 
 [node name="crawler" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_tbje5")]
 texture_filter = 1

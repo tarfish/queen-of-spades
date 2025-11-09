@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var speed: int = 50
 @export var chase_speed: int = 50
 @export var acceleration: int = -30
-@export var knockback := 1000
+@export var knockback := 250
 
 @onready var sprite: AnimatedSprite2D = $sprite
 @onready var raycast: RayCast2D = $sprite/RayCast2D
