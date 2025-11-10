@@ -100,6 +100,8 @@ func reduce_health() -> void:
 	elif health == 0:
 		heart5.hide()
 		get_tree().reload_current_scene()
+		TransitionScreen.transition()
+		await TransitionScreen.on_transition_finished
 
 func _on_timer_timeout() -> void:
 	animationplayer.play("idle")

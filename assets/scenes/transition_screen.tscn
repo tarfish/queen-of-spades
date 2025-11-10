@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwddvq03w770y"]
+
+[ext_resource type="Script" uid="uid://cugtb1e3wx67m" path="res://assets/scripts/transition_screen.gd" id="1_w85ix"]
+
+[sub_resource type="Animation" id="Animation_w85ix"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rectangleofcolor:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_54lm7"]
+resource_name = "fade_to_normal"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rectangleofcolor:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qr7b5"]
+resource_name = "fade_to_black"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rectangleofcolor:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w85ix"]
+_data = {
+&"RESET": SubResource("Animation_w85ix"),
+&"fade_to_normal": SubResource("Animation_54lm7"),
+&"fade_to_red": SubResource("Animation_qr7b5")
+}
+
+[node name="transition_screen" type="CanvasLayer"]
+script = ExtResource("1_w85ix")
+
+[node name="rectangleofcolor" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.259801, 0.115918, 0.146372, 1)
+
+[node name="playerofanimations" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_w85ix")
+}

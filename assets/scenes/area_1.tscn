@@ -366,13 +366,14 @@ tile_set = SubResource("TileSet_yyir1")
 [node name="Player" parent="." instance=ExtResource("2_0ue7q")]
 position = Vector2(-16, -16)
 
-[node name="crawler" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_tbje5")]
+[node name="crawler" parent="." instance=ExtResource("4_tbje5")]
 texture_filter = 1
 position = Vector2(40, 16)
-player = NodePath("../Player")
+script = null
 
 [node name="crawler2" parent="." instance=ExtResource("4_tbje5")]
 position = Vector2(-46, -3)
+script = null
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(0, -120)

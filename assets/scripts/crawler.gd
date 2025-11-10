@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var speed: int = 50
 @export var chase_speed: int = 50
 @export var acceleration: int = -30
+@export var knockback := 250
 
 @onready var sprite: AnimatedSprite2D = $sprite
 @onready var raycast: RayCast2D = $sprite/RayCast2D
@@ -95,3 +96,9 @@ func handle_gravity(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	current_state = states.wander
+
+func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
+	if body.is_in_group("player"):
+		body.reduce_health()
+		print (body.health)
+		body.knockback = position.direction_to(body.position) * knockback

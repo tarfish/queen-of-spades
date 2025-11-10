@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://55glsktgqkbu"]
+[gd_scene load_steps=7 format=3 uid="uid://55glsktgqkbu"]
 
 [ext_resource type="Texture2D" uid="uid://bwd12np5u5bqi" path="res://assets/sprites/crawler-Sheet.png" id="1_r0k6r"]
-[ext_resource type="Script" uid="uid://cj57sw4f32sng" path="res://assets/scenes/crawler.gd" id="1_v0qg8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r0k6r"]
 radius = 2.0
@@ -34,8 +33,6 @@ radius = 5.0
 height = 16.0
 
 [node name="crawler" type="CharacterBody2D"]
-script = ExtResource("1_v0qg8")
-speed = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 6)
