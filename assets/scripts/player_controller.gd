@@ -26,6 +26,7 @@ var knockback = Vector2(150,150)
 @onready var animationplayer = $PlayerAnimator/AnimationPlayer
 @onready var hurttimer = $Timer
 @onready var camera = $Camera2D
+@onready var transition = $"/root/TransitionScreen"
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity
@@ -85,9 +86,7 @@ func Coyote_Timeout() -> void:
 func reduce_health() -> void:
 	health -= 20
 	camera.screen_shake(6, 0.1)
-	print ("hurt")
 	get_tree().create_timer(0.5).timeout.connect(_on_timer_timeout)
-	print ("hurt_2")
 	animationplayer.play("hurt")
 	if health == 80:
 		heart1.hide()
@@ -99,9 +98,10 @@ func reduce_health() -> void:
 		heart4.hide()
 	elif health == 0:
 		heart5.hide()
-		get_tree().reload_current_scene()
-		TransitionScreen.transition()
-		await TransitionScreen.on_transition_finished
+		get_tree().change_scene_to_file("res://assets/scenes/player.tscn")
+		transition.transition()
+		await animationplayer.animation_finished
+		print("fade")
 
 func _on_timer_timeout() -> void:
 	animationplayer.play("idle")

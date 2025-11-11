@@ -66,6 +66,7 @@ modulate = Color(1, 1, 1, 0)
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.259801, 0.115918, 0.146372, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="playerofanimations" type="AnimationPlayer" parent="."]
 libraries = {

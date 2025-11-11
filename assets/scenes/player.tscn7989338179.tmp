@@ -104,8 +104,13 @@ height = 14.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_s027a")
+speed = null
+jump_power = null
+Jump_Buffer_Timer = null
 Coyote_Time = 0.1
 High_jump_time = 0.1
+min_knockback = null
+slow_knockback = null
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
