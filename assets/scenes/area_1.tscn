@@ -369,11 +369,9 @@ position = Vector2(-16, -16)
 [node name="crawler" parent="." instance=ExtResource("4_tbje5")]
 texture_filter = 1
 position = Vector2(40, 16)
-script = null
 
 [node name="crawler2" parent="." instance=ExtResource("4_tbje5")]
 position = Vector2(-46, -3)
-script = null
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(0, -120)

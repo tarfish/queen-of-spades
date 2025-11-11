@@ -56,8 +56,10 @@ _data = {
 &"fade_to_red": SubResource("Animation_qr7b5")
 }
 
-[node name="transition_screen" type="CanvasLayer"]
+[node name="transition_screen" type="CanvasLayer" node_paths=PackedStringArray("color_rect", "animation_player")]
 script = ExtResource("1_w85ix")
+color_rect = NodePath("rectangleofcolor")
+animation_player = NodePath("playerofanimations")
 
 [node name="rectangleofcolor" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)
