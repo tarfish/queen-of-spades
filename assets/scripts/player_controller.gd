@@ -8,6 +8,7 @@ class_name PlayerController
 @export var High_jump_time: float = 0.2
 @export var min_knockback := 100
 @export var slow_knockback := 1.1
+@export var transition = CanvasLayer
 
 var speed_multiplier = 27.0
 var jump_multiplier = -33.0
@@ -26,7 +27,6 @@ var knockback = Vector2(150,150)
 @onready var animationplayer = $PlayerAnimator/AnimationPlayer
 @onready var hurttimer = $Timer
 @onready var camera = $Camera2D
-@onready var transition = $"/root/TransitionScreen"
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity

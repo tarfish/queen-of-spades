@@ -6,7 +6,6 @@ signal on_transition_finished
 @export var animation_player: AnimationPlayer
 
 func _ready():
-	if color_rect != null:
 		color_rect.visible = false
 		animation_player.animation_finished.connect(_on_animation_finished)
 
@@ -18,7 +17,5 @@ func _on_animation_finished(anim_name):
 		color_rect.visible = false
 	
 func transition():
-	if color_rect != null:
 		color_rect.visible = true
-	if animation_player != null:
 		animation_player.play("fade_to_red")

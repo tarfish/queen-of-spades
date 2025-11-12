@@ -16,10 +16,6 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 <<<<<<<HEADrun/main_scene="uid://bo20wm5aevdb8"
 
-[autoload]
-
-TransitionScreen="res://assets/scripts/transition_screen.gd"
-
 [display]
 
 window/stretch/mode="canvas_items"

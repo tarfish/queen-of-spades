@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bo0dii58wi2qf"]
+[gd_scene load_steps=12 format=3 uid="uid://br1c0ruslukan"]
 
 [ext_resource type="Texture2D" uid="uid://co708lr0xdl7o" path="res://assets/sprites/tileset(oneway too).png" id="1_1l7dx"]
 [ext_resource type="Script" uid="uid://blbxkif63jqdv" path="res://assets/scripts/health_test.gd" id="1_5hcxr"]
