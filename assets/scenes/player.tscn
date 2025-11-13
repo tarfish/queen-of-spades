@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bgr4jqe5qadf8" path="res://assets/sprites/queen of spades-Sheet.png" id="1_rwm0n"]
 [ext_resource type="Script" uid="uid://0nonq62y14gt" path="res://assets/scripts/player_controller.gd" id="1_s027a"]
-[ext_resource type="Script" uid="uid://cugtb1e3wx67m" path="res://assets/scripts/transition_screen.gd" id="2_0gfpk"]
+[ext_resource type="Script" uid="uid://c6tjmoiv4kqtu" path="res://assets/scripts/camera_2d.gd" id="2_0gfpk"]
 [ext_resource type="Script" uid="uid://djiewir1rklkq" path="res://assets/scripts/player_animator.gd" id="2_14505"]
 [ext_resource type="PackedScene" uid="uid://dwddvq03w770y" path="res://assets/scenes/transition_screen.tscn" id="3_0gfpk"]
 [ext_resource type="Texture2D" uid="uid://d3xn545gwwxrd" path="res://assets/sprites/health.png" id="4_4wcc8"]
@@ -102,17 +102,14 @@ height = 14.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8sknh"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("transition") groups=["player"]]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_s027a")
 Coyote_Time = 0.1
 High_jump_time = 0.1
-transition = NodePath("Camera2D/transition_screen")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
 script = ExtResource("2_0gfpk")
-
-[node name="transition_screen" parent="Camera2D" instance=ExtResource("3_0gfpk")]
 
 [node name="PlayerAnimator" type="Node2D" parent="." node_paths=PackedStringArray("player_controller", "animation_player", "sprite")]
 script = ExtResource("2_14505")
@@ -192,6 +189,8 @@ expand_mode = 2
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.75
 one_shot = true
+
+[node name="transition_screen" parent="." instance=ExtResource("3_0gfpk")]
 
 [connection signal="timeout" from="Coyote_Timer" to="." method="Coyote_Timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
