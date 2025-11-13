@@ -101,6 +101,7 @@ func handle_death() -> void:
 	await transition.transition()
 	Globals.reset_player_stats()
 	get_tree().reload_current_scene()
+	await transition.on_transition_finished
 
 func _on_timer_timeout() -> void:
 	animationplayer.play("idle")
