@@ -25,9 +25,14 @@ func _process(delta):
 		
 	if Input.is_action_just_pressed("attack"):
 		attack()
-		print ("attack")
 		
 func attack():
+	var overlapping_object = $"../AttackArea".get_overlapping_areas()
+	for area in overlapping_object:
+		if body.is_in_group("crawler")
+			var parent = area.get_parent()
+			print(parent.name)
+			pass
 	is_attacking = true
 	animation_player.play("attack")
 	animation_player.animation_finished.connect(_on_attack_finished, CONNECT_ONE_SHOT)
