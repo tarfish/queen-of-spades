@@ -16,26 +16,28 @@ func _process(delta):
 		return
 	
 	#movement animation
-	if abs(player_controller.velocity.x) > 0.0:
-		animation_player.play("movement")
-	elif abs(player_controller.velocity.x) > 0.0:
-		animation_player.play("jump")
-	else:
-		animation_player.play("idle")
+	if not is_attacking:
+		if abs(player_controller.velocity.x) > 0.0:
+			animation_player.play("movement")
+		elif abs(player_controller.velocity.y) > 0.0:
+			animation_player.play("jump")
+		else:
+			animation_player.play("idle")
 		
 	if Input.is_action_just_pressed("attack"):
 		attack()
 		
 func attack():
-	var overlapping_object = $"../AttackArea".get_overlapping_areas()
+	print("attack")
+	
+	var overlapping_object = get_parent().get_node("AttackArea").get_overlapping_bodies()
 	for area in overlapping_object:
-		if body.is_in_group("crawler")
+		if area.is_in_group("crawler"):
 			var parent = area.get_parent()
 			print(parent.name)
-			pass
+
 	is_attacking = true
 	animation_player.play("attack")
-	animation_player.animation_finished.connect(_on_attack_finished, CONNECT_ONE_SHOT)
 
 func _on_attack_finished(anim_name):
 	if anim_name == "attack":
