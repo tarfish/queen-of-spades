@@ -55,7 +55,7 @@ target_position = Vector2(35, 0)
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["crawler"]]
 position = Vector2(0, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]

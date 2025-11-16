@@ -6,16 +6,22 @@ var is_attacking = false
 @export var animation_player : AnimationPlayer
 @export var sprite : Sprite2D
 
+func _ready():
+	var a = get_parent().get_node("AttackArea")
+	print(a)
+
 func _process(delta):
-	#for flipping
+	# flipping
 	if player_controller.direction == 1:
 		sprite.flip_h = false
 	elif player_controller.direction == -1:
 		sprite.flip_h = true
+		position.x = 0.75
+
 	if is_attacking:
 		return
-	
-	#movement animation
+
+	# movement animation
 	if not is_attacking:
 		if abs(player_controller.velocity.x) > 0.0:
 			animation_player.play("movement")
@@ -23,14 +29,14 @@ func _process(delta):
 			animation_player.play("jump")
 		else:
 			animation_player.play("idle")
-		
+
 	if Input.is_action_just_pressed("attack"):
 		attack()
-		
+
 func attack():
 	print("attack")
-	
 	var overlapping_object = get_parent().get_node("AttackArea").get_overlapping_bodies()
+
 	for area in overlapping_object:
 		if area.is_in_group("crawler"):
 			var parent = area.get_parent()
