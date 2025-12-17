@@ -16,7 +16,6 @@ func _process(delta):
 		sprite.flip_h = false
 	elif player_controller.direction == -1:
 		sprite.flip_h = true
-		position.x = 0.75
 
 	if is_attacking:
 		return
