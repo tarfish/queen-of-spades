@@ -92,7 +92,7 @@ func change_direction() -> void:
 			
 func handle_gravity(delta: float) -> void:
 	if not is_on_floor():
-		velocity.y += gravity + delta
+		velocity.y += gravity * delta
 
 func _on_timer_timeout() -> void:
 	current_state = states.wander
