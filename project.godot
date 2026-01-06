@@ -12,7 +12,7 @@ config_version=5
 
 config/name="queen of spades"
 run/main_scene="uid://br1c0ruslukan"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 <<<<<<<HEADrun/main_scene="uid://bo20wm5aevdb8"
 
