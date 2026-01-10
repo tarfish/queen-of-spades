@@ -1,26 +1,35 @@
 [gd_scene load_steps=4 format=3 uid="uid://lxdlm407r4nm"]
 
 [ext_resource type="Texture2D" uid="uid://b5ixat606wln7" path="res://assets/sprites/spike.png" id="1_asvmq"]
+[ext_resource type="PackedScene" uid="uid://dwddvq03w770y" path="res://assets/scenes/transition_screen.tscn" id="2_1ldwk"]
 
 [sub_resource type="GDScript" id="GDScript_asvmq"]
-script/source = "extends Sprite2D
+script/source = "extends StaticBody2D
+
+@onready var transition = $transition_screen
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group(\"player\"):
+		await transition.transition()
 		get_tree().reload_current_scene()
 "
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_asvmq"]
-radius = 4.0
-
-[node name="spike" type="Sprite2D"]
-texture = ExtResource("1_asvmq")
+[node name="spike" type="StaticBody2D"]
 script = SubResource("GDScript_asvmq")
 
 [node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-1, 2)
-shape = SubResource("CircleShape2D_asvmq")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(-1, 5)
+polygon = PackedVector2Array(-5, 3, -1, -6, 6, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_asvmq")
+
+[node name="transition_screen" parent="." instance=ExtResource("2_1ldwk")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-1, 5)
+polygon = PackedVector2Array(-4, 3, -1, -5, 5, 3)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

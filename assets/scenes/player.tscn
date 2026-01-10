@@ -105,6 +105,8 @@ height = 14.0
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_s027a")
 
+[node name="transition_screen" parent="." instance=ExtResource("3_0gfpk")]
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
 script = ExtResource("2_0gfpk")
@@ -187,8 +189,6 @@ expand_mode = 2
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.75
 one_shot = true
-
-[node name="transition_screen" parent="." instance=ExtResource("3_0gfpk")]
 
 [connection signal="timeout" from="Coyote_Timer" to="." method="Coyote_Timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

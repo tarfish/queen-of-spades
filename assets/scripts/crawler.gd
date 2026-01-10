@@ -1,103 +1,68 @@
 extends CharacterBody2D
 
 @export var player: CharacterBody2D
-@export var speed: int = 50
-@export var chase_speed: int = 50
-@export var acceleration: int = -30
-@export var knockback := 250
+@export var speed := 50.0
+@export var chase_speed := 90.0
+@export var acceleration := 300.0
+@export var knockback := 250.0
+@export var patrol_left_distance: float = 32.0
+@export var patrol_right_distance: float = 32.0
 
 @onready var sprite: AnimatedSprite2D = $sprite
 @onready var raycast: RayCast2D = $sprite/RayCast2D
 @onready var timer: Timer = $Timer
-@onready var raycast2: RayCast2D = $sprite/RayCast2D2
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
-var direction: Vector2
-var right_bounds: Vector2
-var left_bounds: Vector2
+var direction := Vector2.LEFT
+var left_bounds: float
+var right_bounds: float
 
-enum states {
-	wander,
-	chase
-}
-var current_state = states.wander
+enum State { WANDER, CHASE }
+var state := State.WANDER
 
 func _ready():
-	left_bounds = self.position + Vector2(-10,0)
-	right_bounds = self.position + Vector2(10,0)
-	
-func _physics_process(delta: float) -> void:
+	left_bounds = position.x - patrol_left_distance
+	right_bounds = position.x + patrol_right_distance
+
+func _physics_process(delta):
 	handle_gravity(delta)
-	handle_movement(delta)
-	change_direction()
-	look_for_player()
+	update_state()
+	update_direction()
+	move_enemy(delta)
 
-func look_for_player():
-	if raycast.is_colliding():
-		var collider = raycast.get_collider()
-		if collider == player:
-			chase_player()
-		elif current_state == states.chase:
-			stop_chase()
-	elif current_state == states.chase:
-		stop_chase()
-
-func chase_player() -> void:
-	timer.stop()
-	current_state = states.chase
-	
-func stop_chase() -> void:
-	if timer.time_left <= 0:
+func update_state():
+	if raycast.is_colliding() and raycast.get_collider() == player:
+		state = State.CHASE
+		timer.stop()
+	elif state == State.CHASE and timer.is_stopped():
 		timer.start()
 
-func handle_movement(delta: float) -> void:
-	if current_state == states.wander:
-		velocity = velocity.move_toward(direction * speed, acceleration * delta)
+func update_direction():
+	if state == State.WANDER:
+		if position.x <= left_bounds:
+			direction = Vector2.RIGHT
+		elif position.x >= right_bounds:
+			direction = Vector2.LEFT
 	else:
-		velocity = velocity.move_toward(direction * chase_speed, acceleration * delta)
-		
+		direction.x = sign(player.position.x - position.x)
+		direction.y = 0
+
+	sprite.flip_h = direction.x > 0
+
+func move_enemy(delta):
+	var target_speed = chase_speed if state == State.CHASE else speed
+	var target_velocity = Vector2(direction.x * target_speed, velocity.y)
+	velocity = velocity.move_toward(target_velocity, acceleration * delta)
 	move_and_slide()
 
-func change_direction() -> void:
-	if current_state == states.wander:
-		if sprite.flip_h:
-			if self.position.x <= right_bounds.x:
-				direction = Vector2(1,0)
-				acceleration = 100
-				raycast2.enabled = true
-			else:
-				sprite.flip_h = false
-				raycast.target_position = Vector2(-35,0)
-				acceleration = -100
-				raycast2.enabled = false
-		else:
-			if self.position.x >= left_bounds.x:
-				direction = Vector2(1,0)
-				acceleration = -100
-				raycast.enabled = true
-			else:
-				sprite.flip_h = true
-				raycast.target_position = Vector2(35,0)
-				acceleration = 100
-				raycast.enabled = false
-	else:
-		direction = (player.position - self.position).normalized()
-		direction = sign(direction)
-		if direction.x == 1:
-			sprite.flip_h = true
-			acceleration = -100
-		else:
-			sprite.flip_h = false
-			acceleration = 100
-			
-func handle_gravity(delta: float) -> void:
+func handle_gravity(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-func _on_timer_timeout() -> void:
-	current_state = states.wander
+func _on_timer_timeout():
+	state = State.WANDER
 
-func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
+func _on_area_2d_body_entered(body):
 	if body.is_in_group("player"):
 		body.reduce_health()
 		body.knockback = position.direction_to(body.position) * knockback
