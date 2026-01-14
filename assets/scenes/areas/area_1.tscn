@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://br1c0ruslukan"]
+[gd_scene load_steps=14 format=3 uid="uid://br1c0ruslukan"]
 
 [ext_resource type="Texture2D" uid="uid://co708lr0xdl7o" path="res://assets/sprites/tileset(oneway too).png" id="1_1l7dx"]
-[ext_resource type="Script" path="res://assets/scripts/health_test.gd" id="1_5hcxr"]
 [ext_resource type="PackedScene" uid="uid://2euqic8mde1p" path="res://assets/scenes/player.tscn" id="2_0ue7q"]
 [ext_resource type="PackedScene" uid="uid://55glsktgqkbu" path="res://assets/scenes/crawler.tscn" id="4_tbje5"]
 [ext_resource type="PackedScene" uid="uid://lxdlm407r4nm" path="res://assets/scenes/spike.tscn" id="5_jjeiq"]
+[ext_resource type="PackedScene" uid="uid://cxaght1dkfyus" path="res://assets/scenes/spade.tscn" id="5_ka6na"]
+[ext_resource type="PackedScene" uid="uid://c4t1rhdl1jy7o" path="res://assets/scenes/portal.tscn" id="6_ka6na"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0ue7q"]
 texture = ExtResource("1_1l7dx")
@@ -350,7 +351,6 @@ turbulence_influence_min = 0.02
 turbulence_influence_max = 0.08
 
 [node name="area1" type="Node2D"]
-script = ExtResource("1_5hcxr")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-1, 0)
@@ -365,7 +365,7 @@ layer_1/tile_data = PackedInt32Array(-8, 0, 1, -7, 262144, 1, -6, 131072, 0, 655
 tile_set = SubResource("TileSet_yyir1")
 
 [node name="Player" parent="." instance=ExtResource("2_0ue7q")]
-position = Vector2(-17, -15)
+position = Vector2(-10, -3)
 
 [node name="crawler" parent="." instance=ExtResource("4_tbje5")]
 texture_filter = 1
@@ -400,3 +400,9 @@ position = Vector2(59, -40)
 
 [node name="spike4" parent="." instance=ExtResource("5_jjeiq")]
 position = Vector2(6, 24)
+
+[node name="spade" parent="." instance=ExtResource("5_ka6na")]
+position = Vector2(-2, -58)
+
+[node name="portal" parent="." instance=ExtResource("6_ka6na")]
+position = Vector2(-58, -66)

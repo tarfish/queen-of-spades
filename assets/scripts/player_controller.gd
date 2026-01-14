@@ -16,7 +16,7 @@ var Jump_Buffer: bool = false
 var Jump_Available: bool = true
 var Jump_jump_timer = 0
 var health = 100
-var knockback = Vector2(150,150)
+var knockback = Vector2.ZERO
 
 @onready var heart1 = $UI/Hearts/HBoxContainer/Heart
 @onready var heart2 = $UI/Hearts/HBoxContainer/Heart2
@@ -24,7 +24,6 @@ var knockback = Vector2(150,150)
 @onready var heart4 = $UI/Hearts/HBoxContainer/Heart4
 @onready var heart5 = $UI/Hearts/HBoxContainer/Heart5
 @onready var animationplayer = $PlayerAnimator/AnimationPlayer
-@onready var hurttimer = $Timer
 @onready var camera = $Camera2D
 @onready var transition = $transition_screen
 
@@ -41,7 +40,6 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("jump"):
 		if Jump_Available:
-			Jump_Available = false
 			Jump()
 			Jump_jump_timer = High_jump_time
 		else:
@@ -66,6 +64,8 @@ func _physics_process(delta: float) -> void:
 		velocity = knockback
 		move_and_slide()
 		return
+	else:
+		knockback = Vector2.ZERO
 
 	move_and_slide()
 
@@ -82,7 +82,7 @@ func Coyote_Timeout() -> void:
 func reduce_health() -> void:
 	health -= 20
 	camera.screen_shake(6, 0.1)
-	get_tree().create_timer(0.5).timeout.connect(_on_timer_timeout)
+	knockback = Vector2(150, -150)
 	animationplayer.play("hurt")
 
 	if health == 80:

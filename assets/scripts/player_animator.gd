@@ -5,7 +5,8 @@ extends Node2D
 @export var sprite: Sprite2D
 
 func _process(delta):
-	sprite.flip_h = player_controller.direction == -1
+	if player_controller.velocity.x != 0:
+		sprite.flip_h = player_controller.velocity.x < 0
 
 	if abs(player_controller.velocity.x) > 0.0:
 		animation_player.play("movement")
