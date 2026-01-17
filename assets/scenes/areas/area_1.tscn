@@ -406,3 +406,9 @@ position = Vector2(-2, -58)
 
 [node name="portal" parent="." instance=ExtResource("6_ka6na")]
 position = Vector2(-58, -66)
+
+[node name="spade2" parent="." instance=ExtResource("5_ka6na")]
+position = Vector2(-26, -75)
+
+[node name="spade3" parent="." instance=ExtResource("5_ka6na")]
+position = Vector2(-5, -79)

@@ -16,6 +16,6 @@ func close():
 	is_open = false
 	sprite.region_rect.position.x = 0
 
-func _on_body_entered(body: Node2D) -> void:
-	if is_open:
+func _on_area_2d_body_entered(body):
+	if is_open && body.is_in_group("player"):
 		pass

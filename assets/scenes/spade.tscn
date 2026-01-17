@@ -1,6 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxaght1dkfyus"]
+[gd_scene load_steps=4 format=3 uid="uid://cxaght1dkfyus"]
 
 [ext_resource type="Texture2D" uid="uid://y8bwjo6eaf4p" path="res://assets/sprites/spade.png" id="1_j3q6i"]
+[ext_resource type="Script" uid="uid://be18cfpirk8e5" path="res://assets/scripts/spade.gd" id="1_vx824"]
 
-[node name="spade" type="Sprite2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_j3q6i"]
+radius = 5.0990195
+
+[node name="spade" type="Area2D"]
+script = ExtResource("1_vx824")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_j3q6i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_j3q6i")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
