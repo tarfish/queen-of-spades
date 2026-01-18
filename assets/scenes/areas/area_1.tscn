@@ -471,3 +471,18 @@ position = Vector2(-442, -153)
 player = NodePath("../../Player")
 patrol_left_distance = 7.0
 patrol_right_distance = 7.0
+
+[node name="crawler6" parent="crawlers" node_paths=PackedStringArray("player") instance=ExtResource("4_tbje5")]
+texture_filter = 1
+position = Vector2(-248, -121)
+player = NodePath("../../Player")
+patrol_left_distance = 10.0
+patrol_right_distance = 10.0
+
+[node name="crawler7" parent="crawlers" node_paths=PackedStringArray("player") instance=ExtResource("4_tbje5")]
+texture_filter = 1
+position = Vector2(-205, 23)
+player = NodePath("../../Player")
+speed = 65.0
+patrol_left_distance = 40.0
+patrol_right_distance = 40.0
