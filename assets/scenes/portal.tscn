@@ -5,7 +5,7 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nog5u"]
 
-[node name="portal" type="Area2D" node_paths=PackedStringArray("sprite")]
+[node name="portal" type="Area2D" node_paths=PackedStringArray("sprite") groups=["portal"]]
 script = ExtResource("1_df2nl")
 sprite = NodePath("Sprite2D")
 

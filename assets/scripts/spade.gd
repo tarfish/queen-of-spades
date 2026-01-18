@@ -3,5 +3,5 @@ extends Area2D
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		#pickup
+		Globals.add_spade()
 		queue_free()

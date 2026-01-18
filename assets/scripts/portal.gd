@@ -1,5 +1,5 @@
 extends Area2D
-class_name portal
+class_name Portal
 
 @export var sprite : Sprite2D
 
