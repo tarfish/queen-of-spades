@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cxaght1dkfyus" path="res://assets/scenes/spade.tscn" id="5_ka6na"]
 [ext_resource type="PackedScene" uid="uid://c4t1rhdl1jy7o" path="res://assets/scenes/portal.tscn" id="6_ka6na"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0ue7q"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ka6na"]
 texture = ExtResource("1_1l7dx")
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -321,20 +321,20 @@ terrain_set_0/terrain_0/name = "one_way"
 terrain_set_0/terrain_0/color = Color(0.435192, 0.435192, 0.435192, 1)
 terrain_set_0/terrain_1/name = "ground"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
-sources/0 = SubResource("TileSetAtlasSource_0ue7q")
+sources/0 = SubResource("TileSetAtlasSource_ka6na")
 
 [sub_resource type="Curve" id="Curve_tbje5"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.918877, 0.247566), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_5hcxr"]
+[sub_resource type="CurveTexture" id="CurveTexture_4k2ok"]
 curve = SubResource("Curve_tbje5")
 
 [sub_resource type="Gradient" id="Gradient_tbje5"]
 offsets = PackedFloat32Array(0.462069, 0.606897)
 colors = PackedColorArray(1, 1, 1, 0.584314, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_5hcxr"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_d133c"]
 gradient = SubResource("Gradient_tbje5")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tbje5"]
@@ -343,8 +343,8 @@ emission_shape = 3
 emission_box_extents = Vector3(500, 0, 1)
 gravity = Vector3(45, 98, 0)
 scale_max = 2.0
-color_ramp = SubResource("GradientTexture1D_5hcxr")
-alpha_curve = SubResource("CurveTexture_5hcxr")
+color_ramp = SubResource("GradientTexture1D_d133c")
+alpha_curve = SubResource("CurveTexture_4k2ok")
 turbulence_enabled = true
 turbulence_noise_speed_random = 0.0
 turbulence_influence_min = 0.02
