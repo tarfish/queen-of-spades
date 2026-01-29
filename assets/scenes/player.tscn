@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://2euqic8mde1p"]
+[gd_scene format=3 uid="uid://2euqic8mde1p"]
 
 [ext_resource type="Texture2D" uid="uid://bgr4jqe5qadf8" path="res://assets/sprites/queen of spades-Sheet.png" id="1_rwm0n"]
 [ext_resource type="Script" uid="uid://0nonq62y14gt" path="res://assets/scripts/player_controller.gd" id="1_s027a"]
@@ -102,43 +102,41 @@ height = 14.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8sknh"]
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1067165772 groups=["player"]]
 script = ExtResource("1_s027a")
 
-[node name="transition_screen" parent="." instance=ExtResource("3_0gfpk")]
+[node name="transition_screen" parent="." unique_id=530669612 instance=ExtResource("3_0gfpk")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1353679017]
 zoom = Vector2(5, 5)
 script = ExtResource("2_0gfpk")
 
-[node name="PlayerAnimator" type="Node2D" parent="." node_paths=PackedStringArray("player_controller", "animation_player", "sprite")]
+[node name="PlayerAnimator" type="Node2D" parent="." unique_id=1946534645 node_paths=PackedStringArray("player_controller", "animation_player", "sprite")]
 script = ExtResource("2_14505")
 player_controller = NodePath("..")
 animation_player = NodePath("AnimationPlayer")
 sprite = NodePath("Sprite2D")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerAnimator"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerAnimator" unique_id=1523466380]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_4wcc8")
-}
+libraries/ = SubResource("AnimationLibrary_4wcc8")
 speed_scale = 0.75
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayerAnimator"]
+[node name="Sprite2D" type="Sprite2D" parent="PlayerAnimator" unique_id=121389812]
 position = Vector2(0, -8)
 texture = ExtResource("1_rwm0n")
 region_enabled = true
 region_rect = Rect2(96, 0, 16, 16)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=467563268]
 position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_s027a")
 
-[node name="Coyote_Timer" type="Timer" parent="."]
+[node name="Coyote_Timer" type="Timer" parent="." unique_id=417918017]
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." unique_id=1218702539]
 
-[node name="Hearts" type="Panel" parent="UI"]
+[node name="Hearts" type="Panel" parent="UI" unique_id=1039989908]
 anchors_preset = -1
 anchor_left = 0.00954861
 anchor_top = 0.0169753
@@ -150,43 +148,43 @@ offset_right = -11.0
 offset_bottom = -11.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_8sknh")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Hearts"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Hearts" unique_id=93979574]
 layout_mode = 0
 offset_top = 2.0
 offset_right = 389.0
 offset_bottom = 64.0
 
-[node name="Heart" type="TextureRect" parent="UI/Hearts/HBoxContainer"]
+[node name="Heart" type="TextureRect" parent="UI/Hearts/HBoxContainer" unique_id=295699560]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("4_4wcc8")
 expand_mode = 2
 
-[node name="Heart2" type="TextureRect" parent="UI/Hearts/HBoxContainer"]
+[node name="Heart2" type="TextureRect" parent="UI/Hearts/HBoxContainer" unique_id=811876548]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("4_4wcc8")
 expand_mode = 2
 
-[node name="Heart3" type="TextureRect" parent="UI/Hearts/HBoxContainer"]
+[node name="Heart3" type="TextureRect" parent="UI/Hearts/HBoxContainer" unique_id=215490485]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("4_4wcc8")
 expand_mode = 2
 
-[node name="Heart4" type="TextureRect" parent="UI/Hearts/HBoxContainer"]
+[node name="Heart4" type="TextureRect" parent="UI/Hearts/HBoxContainer" unique_id=1996020476]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("4_4wcc8")
 expand_mode = 2
 
-[node name="Heart5" type="TextureRect" parent="UI/Hearts/HBoxContainer"]
+[node name="Heart5" type="TextureRect" parent="UI/Hearts/HBoxContainer" unique_id=541655537]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("4_4wcc8")
 expand_mode = 2
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=127381547]
 wait_time = 0.75
 one_shot = true
 

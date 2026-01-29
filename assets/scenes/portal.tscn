@@ -1,20 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4t1rhdl1jy7o"]
+[gd_scene format=3 uid="uid://c4t1rhdl1jy7o"]
 
 [ext_resource type="Script" uid="uid://bmkol35k2501e" path="res://assets/scripts/portal.gd" id="1_df2nl"]
 [ext_resource type="Texture2D" uid="uid://d0qqhnljkudia" path="res://assets/sprites/portal-Sheet.png" id="1_nog5u"]
+[ext_resource type="PackedScene" uid="uid://dwddvq03w770y" path="res://assets/scenes/transition_screen.tscn" id="3_dbnmw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nog5u"]
 
-[node name="portal" type="Area2D" node_paths=PackedStringArray("sprite") groups=["portal"]]
+[node name="portal" type="Area2D" unique_id=1157732995 node_paths=PackedStringArray("sprite") groups=["portal"]]
 script = ExtResource("1_df2nl")
 sprite = NodePath("Sprite2D")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2107558947]
 texture = ExtResource("1_nog5u")
 region_enabled = true
 region_rect = Rect2(32, 0, 32, 32)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1871567174]
 shape = SubResource("CircleShape2D_nog5u")
+
+[node name="transition_screen" parent="." unique_id=880983112 instance=ExtResource("3_dbnmw")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

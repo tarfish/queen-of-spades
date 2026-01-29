@@ -4,6 +4,8 @@ class_name Portal
 @export var sprite: Sprite2D
 @export var rotation_speed: float = 2.0
 
+@onready var transition = $transition_screen
+
 var area_path := "res://assets/scenes/areas/"
 var is_open := false
 
@@ -29,4 +31,6 @@ func _on_body_entered(body: Node2D) -> void:
 func next_level():
 	GameState.current_area += 1
 	var full_path = area_path + "area_" + str(GameState.current_area) + ".tscn"
+	await transition.transition()
+	await transition.on_transition_finished
 	get_tree().change_scene_to_file(full_path)
