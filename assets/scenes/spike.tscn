@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://lxdlm407r4nm"]
+[gd_scene format=3 uid="uid://lxdlm407r4nm"]
 
 [ext_resource type="Texture2D" uid="uid://b5ixat606wln7" path="res://assets/sprites/spike.png" id="1_asvmq"]
 [ext_resource type="PackedScene" uid="uid://dwddvq03w770y" path="res://assets/scenes/transition_screen.tscn" id="2_1ldwk"]
@@ -14,21 +14,21 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		get_tree().reload_current_scene()
 "
 
-[node name="spike" type="StaticBody2D"]
+[node name="spike" type="StaticBody2D" unique_id=892638853]
 script = SubResource("GDScript_asvmq")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=843342053]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=199514296]
 position = Vector2(-1, 5)
 polygon = PackedVector2Array(-5, 3, -1, -6, 6, 3)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=837509940]
 texture = ExtResource("1_asvmq")
 
-[node name="transition_screen" parent="." instance=ExtResource("2_1ldwk")]
+[node name="transition_screen" parent="." unique_id=585037991 instance=ExtResource("2_1ldwk")]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=585491151]
 position = Vector2(-1, 5)
 polygon = PackedVector2Array(-4, 3, -1, -5, 5, 3)
 

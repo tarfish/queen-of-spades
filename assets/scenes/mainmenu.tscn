@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://el6ox6v76tvw"]
+
+[ext_resource type="FontFile" uid="uid://dn618kq15brwi" path="res://assets/PrStart.ttf" id="1_ccmni"]
+
+[sub_resource type="Theme" id="Theme_tosni"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tosni"]
+bg_color = Color(0.3764706, 0.39215687, 0.43137255, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 16
+shadow_size = 3
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ccmni"]
+bg_color = Color(0.3764706, 0.39215687, 0.43137255, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 16
+shadow_size = 3
+shadow_offset = Vector2(3, 3)
+
+[node name="mainmenu" type="Control" unique_id=1681009184]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="buttons" type="VBoxContainer" parent="." unique_id=395294171]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.5
+offset_top = 23.0
+offset_right = 156.5
+offset_bottom = 231.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="startbutton" type="Button" parent="buttons" unique_id=545698198]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_tosni")
+theme_override_colors/font_color = Color(0.17097962, 0.17998704, 0.20254439, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_tosni")
+text = "Start"
+
+[node name="quitbutton" type="Button" parent="buttons" unique_id=100125273]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.17254902, 0.18039216, 0.20392157, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ccmni")
+text = "Quit"
+
+[node name="optionsbutton" type="Button" parent="buttons" unique_id=278976248]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_tosni")
+theme_override_colors/font_color = Color(0.17097962, 0.17998704, 0.20254439, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_tosni")
+text = "Options"
+
+[node name="logo" type="Label" parent="." unique_id=42380134]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -429.0
+offset_top = 135.0
+offset_right = 483.0
+offset_bottom = 314.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.17254902, 0.18039216, 0.20392157, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 7
+theme_override_fonts/font = ExtResource("1_ccmni")
+theme_override_font_sizes/font_size = 88
+text = "Queen of 
+ Spades"
+
+[node name="backgorund" type="Panel" parent="." unique_id=1788781105]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
