@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="queen of spades"
-run/main_scene="uid://br1c0ruslukan"
+run/main_scene="uid://el6ox6v76tvw"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 <<<<<<<HEADrun/main_scene="uid://bo20wm5aevdb8"
