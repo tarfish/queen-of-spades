@@ -20,3 +20,7 @@ func _on_optionsbutton_pressed() -> void:
 func _on_optionsquitbutton_pressed() -> void:
 	buttons.visible = true
 	options.visible = false
+
+
+func _on_musicvolume_value_changed(value: float) -> void:
+	pass # Replace with function body.

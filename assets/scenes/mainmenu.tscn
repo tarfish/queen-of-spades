@@ -2,7 +2,8 @@
 
 [ext_resource type="FontFile" uid="uid://dn618kq15brwi" path="res://assets/PrStart.ttf" id="1_ccmni"]
 [ext_resource type="Script" uid="uid://cn2mjjaqkhif" path="res://assets/scripts/mainmenu.gd" id="1_jm4xt"]
-[ext_resource type="AudioStream" uid="uid://03vaq6by7oo7" path="res://assets/bgm.wav" id="3_ooe2i"]
+[ext_resource type="AudioStream" uid="uid://cqf0iol2j6vai" path="res://assets/better bgm.wav" id="3_ooe2i"]
+[ext_resource type="Script" uid="uid://b1ph4lrepht8j" path="res://assets/scripts/musicvolume.gd" id="4_dnk4y"]
 
 [sub_resource type="Theme" id="Theme_tosni"]
 
@@ -58,6 +59,27 @@ corner_detail = 16
 shadow_size = 3
 shadow_offset = Vector2(3, 3)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7op8g"]
+bg_color = Color(0.17254902, 0.18039216, 0.20392157, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ooe2i"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ooe2i"]
+color = Color(0.25565878, 0.25565878, 0.25565878, 0.6)
+thickness = 8
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_dnk4y"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+color = Color(0, 0, 0, 0.6)
+thickness = 8
+
 [node name="mainmenu" type="Control" unique_id=1681009184]
 layout_mode = 3
 anchors_preset = 15
@@ -68,6 +90,7 @@ grow_vertical = 2
 script = ExtResource("1_jm4xt")
 
 [node name="buttons" type="VBoxContainer" parent="." unique_id=395294171]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -151,6 +174,11 @@ theme_override_font_sizes/font_size = 88
 text = "Queen of 
  Spades"
 
+[node name="bgm" type="AudioStreamPlayer" parent="." unique_id=1021621894]
+stream = ExtResource("3_ooe2i")
+autoplay = true
+bus = &"bgm"
+
 [node name="options" type="Panel" parent="." unique_id=1760865327]
 layout_mode = 1
 anchors_preset = 8
@@ -164,6 +192,7 @@ offset_right = 237.5
 offset_bottom = 281.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7op8g")
 
 [node name="optionstext" type="Label" parent="options" unique_id=1647843560]
 layout_mode = 1
@@ -174,6 +203,7 @@ offset_bottom = 43.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("1_ccmni")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_ooe2i")
 text = "Options"
 horizontal_alignment = 1
 
@@ -204,11 +234,29 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_ooe2i")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ccmni")
 text = "Back"
 
-[node name="bgm" type="AudioStreamPlayer" parent="." unique_id=1021621894]
-stream = ExtResource("3_ooe2i")
-autoplay = true
+[node name="musicvolume" type="HSlider" parent="options" unique_id=731106220]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -162.0
+offset_top = -53.0
+offset_right = 162.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_ooe2i")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_dnk4y")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_dnk4y")
+min_value = -80.0
+max_value = 0.0
+script = ExtResource("4_dnk4y")
+audio_bus_name = "bgm"
 
 [connection signal="pressed" from="buttons/startbutton" to="." method="_on_startbutton_pressed"]
 [connection signal="pressed" from="buttons/optionsbutton" to="." method="_on_optionsbutton_pressed"]
 [connection signal="pressed" from="buttons/quitbutton" to="." method="_on_quitbutton_pressed"]
 [connection signal="pressed" from="options/optionsquitbutton" to="." method="_on_optionsquitbutton_pressed"]
+[connection signal="value_changed" from="options/musicvolume" to="options/musicvolume" method="_on_value_changed"]
