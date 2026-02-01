@@ -2,6 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://dn618kq15brwi" path="res://assets/PrStart.ttf" id="1_ccmni"]
 [ext_resource type="Script" uid="uid://cn2mjjaqkhif" path="res://assets/scripts/mainmenu.gd" id="1_jm4xt"]
+[ext_resource type="AudioStream" uid="uid://03vaq6by7oo7" path="res://assets/bgm.wav" id="3_ooe2i"]
 
 [sub_resource type="Theme" id="Theme_tosni"]
 
@@ -89,6 +90,7 @@ theme_override_colors/font_color = Color(0.17097962, 0.17998704, 0.20254439, 1)
 theme_override_colors/font_focus_color = Color(0.17254902, 0.18039216, 0.20392157, 1)
 theme_override_colors/font_pressed_color = Color(0.17254902, 0.18039216, 0.20392157, 1)
 theme_override_colors/font_hover_color = Color(0.17254902, 0.18039216, 0.20392157, 1)
+theme_override_fonts/font = ExtResource("1_ccmni")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_tosni")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_jm4xt")
@@ -96,21 +98,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_dnk4y")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_ooe2i")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ccmni")
 text = "Start"
-
-[node name="quitbutton" type="Button" parent="buttons" unique_id=100125273]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.17097962, 0.17998704, 0.20254439, 1)
-theme_override_colors/font_focus_color = Color(0.17254902, 0.18039216, 0.20392157, 1)
-theme_override_colors/font_pressed_color = Color(0.17254902, 0.18039216, 0.20392157, 1)
-theme_override_colors/font_hover_color = Color(0.17254902, 0.18039216, 0.20392157, 1)
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_ccmni")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_jm4xt")
-theme_override_styles/hover = SubResource("StyleBoxFlat_dnk4y")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_ooe2i")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ccmni")
-text = "Quit"
 
 [node name="optionsbutton" type="Button" parent="buttons" unique_id=278976248]
 layout_mode = 2
@@ -120,6 +107,7 @@ theme_override_colors/font_color = Color(0.17097962, 0.17998704, 0.20254439, 1)
 theme_override_colors/font_focus_color = Color(0.17254902, 0.18039216, 0.20392157, 1)
 theme_override_colors/font_pressed_color = Color(0.17254902, 0.18039216, 0.20392157, 1)
 theme_override_colors/font_hover_color = Color(0.17254902, 0.18039216, 0.20392157, 1)
+theme_override_fonts/font = ExtResource("1_ccmni")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_tosni")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_jm4xt")
@@ -128,15 +116,31 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_ooe2i")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ccmni")
 text = "Options"
 
+[node name="quitbutton" type="Button" parent="buttons" unique_id=100125273]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.17097962, 0.17998704, 0.20254439, 1)
+theme_override_colors/font_focus_color = Color(0.17254902, 0.18039216, 0.20392157, 1)
+theme_override_colors/font_pressed_color = Color(0.17254902, 0.18039216, 0.20392157, 1)
+theme_override_colors/font_hover_color = Color(0.17254902, 0.18039216, 0.20392157, 1)
+theme_override_fonts/font = ExtResource("1_ccmni")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ccmni")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jm4xt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dnk4y")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ooe2i")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ccmni")
+text = "Quit"
+
 [node name="logo" type="Label" parent="." unique_id=42380134]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -429.0
-offset_top = 135.0
+offset_top = 79.0
 offset_right = 483.0
-offset_bottom = 314.0
+offset_bottom = 258.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.17254902, 0.18039216, 0.20392157, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
@@ -147,6 +151,64 @@ theme_override_font_sizes/font_size = 88
 text = "Queen of 
  Spades"
 
+[node name="options" type="Panel" parent="." unique_id=1760865327]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -237.5
+offset_top = -44.0
+offset_right = 237.5
+offset_bottom = 281.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="optionstext" type="Label" parent="options" unique_id=1647843560]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 9.0
+offset_bottom = 43.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_ccmni")
+theme_override_font_sizes/font_size = 32
+text = "Options"
+horizontal_alignment = 1
+
+[node name="optionsquitbutton" type="Button" parent="options" unique_id=1380649136]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -89.75
+offset_top = -49.0
+offset_right = 89.75
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.17097962, 0.17998704, 0.20254439, 1)
+theme_override_colors/font_focus_color = Color(0.17254902, 0.18039216, 0.20392157, 1)
+theme_override_colors/font_pressed_color = Color(0.17254902, 0.18039216, 0.20392157, 1)
+theme_override_colors/font_hover_color = Color(0.17254902, 0.18039216, 0.20392157, 1)
+theme_override_fonts/font = ExtResource("1_ccmni")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ccmni")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jm4xt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dnk4y")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ooe2i")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ccmni")
+text = "Back"
+
+[node name="bgm" type="AudioStreamPlayer" parent="." unique_id=1021621894]
+stream = ExtResource("3_ooe2i")
+autoplay = true
+
 [connection signal="pressed" from="buttons/startbutton" to="." method="_on_startbutton_pressed"]
-[connection signal="pressed" from="buttons/quitbutton" to="." method="_on_quitbutton_pressed"]
 [connection signal="pressed" from="buttons/optionsbutton" to="." method="_on_optionsbutton_pressed"]
+[connection signal="pressed" from="buttons/quitbutton" to="." method="_on_quitbutton_pressed"]
+[connection signal="pressed" from="options/optionsquitbutton" to="." method="_on_optionsquitbutton_pressed"]
