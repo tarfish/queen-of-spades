@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://b06325l4qtqm6"]
 
+[ext_resource type="PackedScene" uid="uid://55glsktgqkbu" path="res://assets/scenes/crawler.tscn" id="1_00rug"]
+[ext_resource type="PackedScene" uid="uid://lxdlm407r4nm" path="res://assets/scenes/spike.tscn" id="1_74e7n"]
 [ext_resource type="Texture2D" uid="uid://co708lr0xdl7o" path="res://assets/sprites/tileset(oneway too).png" id="1_blyc0"]
 [ext_resource type="PackedScene" uid="uid://2euqic8mde1p" path="res://assets/scenes/player.tscn" id="2_hgs5c"]
 
@@ -350,9 +352,96 @@ turbulence_influence_max = 0.08
 
 [node name="spikes" type="Node" parent="." unique_id=750804864]
 
+[node name="spike" parent="spikes" unique_id=892638853 instance=ExtResource("1_74e7n")]
+position = Vector2(613, 568)
+
+[node name="spike2" parent="spikes" unique_id=46931738 instance=ExtResource("1_74e7n")]
+position = Vector2(626, 568)
+
+[node name="spike3" parent="spikes" unique_id=287661560 instance=ExtResource("1_74e7n")]
+position = Vector2(639, 568)
+
+[node name="spike4" parent="spikes" unique_id=991796883 instance=ExtResource("1_74e7n")]
+position = Vector2(652, 568)
+
+[node name="spike5" parent="spikes" unique_id=1615141032 instance=ExtResource("1_74e7n")]
+position = Vector2(665, 568)
+
+[node name="spike6" parent="spikes" unique_id=319020973 instance=ExtResource("1_74e7n")]
+position = Vector2(678, 568)
+
+[node name="spike7" parent="spikes" unique_id=543618308 instance=ExtResource("1_74e7n")]
+position = Vector2(691, 568)
+
+[node name="spike8" parent="spikes" unique_id=1144836557 instance=ExtResource("1_74e7n")]
+position = Vector2(704, 568)
+
 [node name="spades" type="Node" parent="." unique_id=1498819000]
 
 [node name="crawlers" type="Node" parent="." unique_id=1030110184]
+
+[node name="crawler" parent="crawlers" unique_id=1875404124 node_paths=PackedStringArray("player") instance=ExtResource("1_00rug")]
+texture_filter = 1
+position = Vector2(231, 567)
+player = NodePath("../../Player")
+patrol_left_distance = 40.0
+patrol_right_distance = 40.0
+
+[node name="crawler2" parent="crawlers" unique_id=1454650798 node_paths=PackedStringArray("player") instance=ExtResource("1_00rug")]
+texture_filter = 1
+position = Vector2(454, 358)
+player = NodePath("../../Player")
+patrol_left_distance = 30.0
+patrol_right_distance = 30.0
+
+[node name="crawler3" parent="crawlers" unique_id=1409788904 node_paths=PackedStringArray("player") instance=ExtResource("1_00rug")]
+texture_filter = 1
+position = Vector2(398, 502)
+player = NodePath("../../Player")
+patrol_left_distance = 20.0
+patrol_right_distance = 20.0
+
+[node name="crawler4" parent="crawlers" unique_id=266472976 node_paths=PackedStringArray("player") instance=ExtResource("1_00rug")]
+texture_filter = 1
+position = Vector2(165, 469)
+player = NodePath("../../Player")
+patrol_left_distance = 20.0
+patrol_right_distance = 20.0
+
+[node name="crawler5" parent="crawlers" unique_id=1219001416 node_paths=PackedStringArray("player") instance=ExtResource("1_00rug")]
+texture_filter = 1
+position = Vector2(180, 340)
+player = NodePath("../../Player")
+patrol_left_distance = 15.0
+patrol_right_distance = 15.0
+
+[node name="crawler6" parent="crawlers" unique_id=874951791 node_paths=PackedStringArray("player") instance=ExtResource("1_00rug")]
+texture_filter = 1
+position = Vector2(307, 195)
+player = NodePath("../../Player")
+patrol_left_distance = 20.0
+patrol_right_distance = 20.0
+
+[node name="crawler7" parent="crawlers" unique_id=717780486 node_paths=PackedStringArray("player") instance=ExtResource("1_00rug")]
+texture_filter = 1
+position = Vector2(426, 34)
+player = NodePath("../../Player")
+patrol_left_distance = 20.0
+patrol_right_distance = 20.0
+
+[node name="crawler8" parent="crawlers" unique_id=1623007771 node_paths=PackedStringArray("player") instance=ExtResource("1_00rug")]
+texture_filter = 1
+position = Vector2(769, 561)
+player = NodePath("../../Player")
+patrol_left_distance = 15.0
+patrol_right_distance = 15.0
+
+[node name="crawler9" parent="crawlers" unique_id=1530730425 node_paths=PackedStringArray("player") instance=ExtResource("1_00rug")]
+texture_filter = 1
+position = Vector2(928, 568)
+player = NodePath("../../Player")
+patrol_left_distance = 40.0
+patrol_right_distance = 40.0
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1837735395]
 position = Vector2(-1, 0)
