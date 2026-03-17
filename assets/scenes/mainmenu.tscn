@@ -242,18 +242,33 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -162.0
-offset_top = -53.0
+offset_top = -44.0
 offset_right = 162.0
-offset_bottom = -37.0
+offset_bottom = -28.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/slider = SubResource("StyleBoxLine_ooe2i")
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_dnk4y")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_dnk4y")
-min_value = -80.0
-max_value = 0.0
+max_value = 1.0
+step = 0.05
 script = ExtResource("4_dnk4y")
 audio_bus_name = "bgm"
+
+[node name="volumetext" type="Label" parent="options" unique_id=1771637972]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 6.0
+offset_top = 88.0
+offset_right = 6.0
+offset_bottom = 122.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_ccmni")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxTexture_ooe2i")
+text = "Game Volume"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="buttons/startbutton" to="." method="_on_startbutton_pressed"]
 [connection signal="pressed" from="buttons/optionsbutton" to="." method="_on_optionsbutton_pressed"]

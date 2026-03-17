@@ -27,6 +27,7 @@ GameState="*res://assets/scripts/game_state.gd"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [editor_plugins]
