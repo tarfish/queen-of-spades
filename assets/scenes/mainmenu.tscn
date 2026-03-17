@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cn2mjjaqkhif" path="res://assets/scripts/mainmenu.gd" id="1_jm4xt"]
 [ext_resource type="AudioStream" uid="uid://cqf0iol2j6vai" path="res://assets/better bgm.wav" id="3_ooe2i"]
 [ext_resource type="Script" uid="uid://b1ph4lrepht8j" path="res://assets/scripts/musicvolume.gd" id="4_dnk4y"]
+[ext_resource type="Script" uid="uid://6kxdacfpnpb7" path="res://assets/scripts/fullscreencontrol.gd" id="5_7op8g"]
 
 [sub_resource type="Theme" id="Theme_tosni"]
 
@@ -270,8 +271,39 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_ooe2i")
 text = "Game Volume"
 horizontal_alignment = 1
 
+[node name="fullscreencontrol" type="CheckButton" parent="options" unique_id=968501749]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.0
+offset_top = 49.0
+offset_right = 22.0
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_7op8g")
+
+[node name="fulscreencontroltext" type="Label" parent="options" unique_id=121511770]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 12.0
+offset_top = 176.0
+offset_right = 12.0
+offset_bottom = 210.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_ccmni")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxTexture_ooe2i")
+text = "Fulscreen Control"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="buttons/startbutton" to="." method="_on_startbutton_pressed"]
 [connection signal="pressed" from="buttons/optionsbutton" to="." method="_on_optionsbutton_pressed"]
 [connection signal="pressed" from="buttons/quitbutton" to="." method="_on_quitbutton_pressed"]
 [connection signal="pressed" from="options/optionsquitbutton" to="." method="_on_optionsquitbutton_pressed"]
 [connection signal="value_changed" from="options/musicvolume" to="options/musicvolume" method="_on_value_changed"]
+[connection signal="toggled" from="options/fullscreencontrol" to="options/fullscreencontrol" method="_on_toggled"]
