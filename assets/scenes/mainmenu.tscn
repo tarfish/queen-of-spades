@@ -81,6 +81,15 @@ content_margin_bottom = 16.0
 color = Color(0, 0, 0, 0.6)
 thickness = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mo8e2"]
+bg_color = Color(0.17254902, 0.18039216, 0.20392157, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7op8g"]
+
 [node name="mainmenu" type="Control" unique_id=1681009184]
 layout_mode = 3
 anchors_preset = 15
@@ -91,7 +100,6 @@ grow_vertical = 2
 script = ExtResource("1_jm4xt")
 
 [node name="buttons" type="VBoxContainer" parent="." unique_id=395294171]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -122,6 +130,23 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_dnk4y")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_ooe2i")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ccmni")
 text = "Start"
+
+[node name="tutorialbutton" type="Button" parent="buttons" unique_id=566605486]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_tosni")
+theme_override_colors/font_color = Color(0.17097962, 0.17998704, 0.20254439, 1)
+theme_override_colors/font_focus_color = Color(0.17254902, 0.18039216, 0.20392157, 1)
+theme_override_colors/font_pressed_color = Color(0.17254902, 0.18039216, 0.20392157, 1)
+theme_override_colors/font_hover_color = Color(0.17254902, 0.18039216, 0.20392157, 1)
+theme_override_fonts/font = ExtResource("1_ccmni")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_tosni")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jm4xt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dnk4y")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ooe2i")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ccmni")
+text = "Tutorial"
 
 [node name="optionsbutton" type="Button" parent="buttons" unique_id=278976248]
 layout_mode = 2
@@ -253,6 +278,7 @@ theme_override_styles/grabber_area = SubResource("StyleBoxLine_dnk4y")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_dnk4y")
 max_value = 1.0
 step = 0.05
+value = 0.5
 script = ExtResource("4_dnk4y")
 audio_bus_name = "bgm"
 
@@ -301,9 +327,86 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_ooe2i")
 text = "Fulscreen Control"
 horizontal_alignment = 1
 
+[node name="tutorial" type="Panel" parent="." unique_id=983200129]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -506.66663
+offset_top = -285.0
+offset_right = 506.66663
+offset_bottom = 285.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mo8e2")
+
+[node name="tutorialtext" type="Label" parent="tutorial" unique_id=56725646]
+layout_mode = 0
+offset_top = 9.0
+offset_right = 1012.6666
+offset_bottom = 67.0
+theme_override_fonts/font = ExtResource("1_ccmni")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxTexture_7op8g")
+text = "Tutorial"
+horizontal_alignment = 1
+
+[node name="tutorialquitbutton" type="Button" parent="tutorial" unique_id=1376723671]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -89.75
+offset_top = -49.0
+offset_right = 89.75
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.17097962, 0.17998704, 0.20254439, 1)
+theme_override_colors/font_focus_color = Color(0.17254902, 0.18039216, 0.20392157, 1)
+theme_override_colors/font_pressed_color = Color(0.17254902, 0.18039216, 0.20392157, 1)
+theme_override_colors/font_hover_color = Color(0.17254902, 0.18039216, 0.20392157, 1)
+theme_override_fonts/font = ExtResource("1_ccmni")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ccmni")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jm4xt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dnk4y")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ooe2i")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ccmni")
+text = "Back"
+
+[node name="tutorial" type="Label" parent="tutorial" unique_id=1421187957]
+layout_mode = 0
+offset_top = 117.0
+offset_right = 1012.6666
+offset_bottom = 559.0
+theme_override_fonts/font = ExtResource("1_ccmni")
+theme_override_font_sizes/font_size = 24
+text = "Welcome to Queen of Spades!
+
+Controls: Arrow Keys to move, and Z to
+jump.
+
+Your goal is to progress to the next
+world, but a portal will stop you
+from continuing.
+
+The portal will be closed, but collecting
+three spades will open the portal for
+you.
+Good Luck!"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="buttons/startbutton" to="." method="_on_startbutton_pressed"]
+[connection signal="pressed" from="buttons/tutorialbutton" to="." method="_on_tutorialbutton_pressed"]
 [connection signal="pressed" from="buttons/optionsbutton" to="." method="_on_optionsbutton_pressed"]
 [connection signal="pressed" from="buttons/quitbutton" to="." method="_on_quitbutton_pressed"]
 [connection signal="pressed" from="options/optionsquitbutton" to="." method="_on_optionsquitbutton_pressed"]
 [connection signal="value_changed" from="options/musicvolume" to="options/musicvolume" method="_on_value_changed"]
 [connection signal="toggled" from="options/fullscreencontrol" to="options/fullscreencontrol" method="_on_toggled"]
+[connection signal="pressed" from="tutorial/tutorialquitbutton" to="." method="_on_tutorialquitbutton_pressed"]
