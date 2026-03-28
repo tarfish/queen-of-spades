@@ -204,6 +204,7 @@ text = "Queen of
 stream = ExtResource("3_ooe2i")
 autoplay = true
 bus = &"bgm"
+playback_type = 1
 
 [node name="options" type="Panel" parent="." unique_id=1760865327]
 layout_mode = 1

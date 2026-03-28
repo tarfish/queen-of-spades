@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://lxdlm407r4nm" path="res://assets/scenes/spike.tscn" id="5_jjeiq"]
 [ext_resource type="PackedScene" uid="uid://cxaght1dkfyus" path="res://assets/scenes/spade.tscn" id="5_ka6na"]
 [ext_resource type="PackedScene" uid="uid://c4t1rhdl1jy7o" path="res://assets/scenes/portal.tscn" id="6_ka6na"]
+[ext_resource type="AudioStream" uid="uid://cqf0iol2j6vai" path="res://assets/better bgm.wav" id="7_4k2ok"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ka6na"]
 texture = ExtResource("1_1l7dx")
@@ -486,3 +487,9 @@ player = NodePath("../../Player")
 speed = 65.0
 patrol_left_distance = 40.0
 patrol_right_distance = 40.0
+
+[node name="bgm" type="AudioStreamPlayer" parent="." unique_id=1909323156]
+stream = ExtResource("7_4k2ok")
+autoplay = true
+bus = &"bgm"
+playback_type = 1
