@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://55glsktgqkbu" path="res://assets/scenes/crawler.tscn" id="1_00rug"]
 [ext_resource type="PackedScene" uid="uid://lxdlm407r4nm" path="res://assets/scenes/spike.tscn" id="1_74e7n"]
 [ext_resource type="Texture2D" uid="uid://co708lr0xdl7o" path="res://assets/sprites/tileset(oneway too).png" id="1_blyc0"]
+[ext_resource type="Texture2D" uid="uid://b4q12rji0oulh" path="res://assets/sprites/background.png" id="1_na1ls"]
 [ext_resource type="PackedScene" uid="uid://cxaght1dkfyus" path="res://assets/scenes/spade.tscn" id="2_3rdar"]
 [ext_resource type="PackedScene" uid="uid://2euqic8mde1p" path="res://assets/scenes/player.tscn" id="2_hgs5c"]
 [ext_resource type="AudioStream" uid="uid://cqf0iol2j6vai" path="res://assets/better bgm.wav" id="5_oudd8"]
@@ -351,6 +352,11 @@ turbulence_influence_min = 0.02
 turbulence_influence_max = 0.08
 
 [node name="area2" type="Node2D" unique_id=1224041790]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1804989434]
+position = Vector2(541, 217.00002)
+scale = Vector2(0.66574085, 0.6657408)
+texture = ExtResource("1_na1ls")
 
 [node name="spikes" type="Node" parent="." unique_id=750804864]
 
