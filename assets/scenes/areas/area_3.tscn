@@ -1,7 +1,68 @@
 [gd_scene format=3 uid="uid://t8erug30ry4x"]
 
-[node name="area_3" type="Node2D" unique_id=848516870]
+[ext_resource type="Script" uid="uid://b06k7d5qa6dq2" path="res://assets/scripts/area_3.gd" id="1_tewus"]
+[ext_resource type="FontFile" uid="uid://dn618kq15brwi" path="res://assets/PrStart.ttf" id="2_dv8wu"]
 
-[node name="Panel" type="Panel" parent="." unique_id=1692407682]
-offset_right = 875.0
-offset_bottom = 433.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tewus"]
+bg_color = Color(0.17323682, 0.18135422, 0.20589352, 1)
+
+[sub_resource type="Curve" id="Curve_dv8wu"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.918877, 0.247566), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_5f0af"]
+curve = SubResource("Curve_dv8wu")
+
+[sub_resource type="Gradient" id="Gradient_s3k35"]
+offsets = PackedFloat32Array(0.462069, 0.606897)
+colors = PackedColorArray(1, 1, 1, 0.584314, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_q28fi"]
+gradient = SubResource("Gradient_s3k35")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o4pra"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(500, 0, 1)
+gravity = Vector3(45, 98, 0)
+scale_max = 2.0
+color_ramp = SubResource("GradientTexture1D_q28fi")
+alpha_curve = SubResource("CurveTexture_5f0af")
+turbulence_enabled = true
+turbulence_noise_speed_random = 0.0
+turbulence_influence_min = 0.02
+turbulence_influence_max = 0.08
+
+[node name="area_3" type="Node2D" unique_id=848516870]
+script = ExtResource("1_tewus")
+
+[node name="Panel" type="Panel" parent="." unique_id=909197327]
+offset_left = -417.0
+offset_top = -120.0
+offset_right = 1535.0
+offset_bottom = 800.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tewus")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=624372067]
+position = Vector2(0, -320)
+scale = Vector2(10.275, 10.275)
+amount = 2000
+lifetime = 10.0
+preprocess = 30.0
+process_material = SubResource("ParticleProcessMaterial_o4pra")
+
+[node name="endtext" type="Label" parent="." unique_id=977422123]
+offset_left = 56.0
+offset_top = 136.0
+offset_right = 1728.0
+offset_bottom = 315.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.5310907, 0.54622024, 0.5922381, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 7
+theme_override_fonts/font = ExtResource("2_dv8wu")
+theme_override_font_sizes/font_size = 55
+text = "The End!
+	Thanks for playing!"

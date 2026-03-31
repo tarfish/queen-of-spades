@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b06325l4qtqm6"]
 
 [ext_resource type="PackedScene" uid="uid://55glsktgqkbu" path="res://assets/scenes/crawler.tscn" id="1_00rug"]
+[ext_resource type="Script" uid="uid://djon32hamw2jv" path="res://assets/scripts/area_2.gd" id="1_2cp0o"]
 [ext_resource type="PackedScene" uid="uid://lxdlm407r4nm" path="res://assets/scenes/spike.tscn" id="1_74e7n"]
 [ext_resource type="Texture2D" uid="uid://co708lr0xdl7o" path="res://assets/sprites/tileset(oneway too).png" id="1_blyc0"]
 [ext_resource type="Texture2D" uid="uid://b4q12rji0oulh" path="res://assets/sprites/background.png" id="1_na1ls"]
@@ -353,6 +354,7 @@ turbulence_influence_min = 0.02
 turbulence_influence_max = 0.08
 
 [node name="area2" type="Node2D" unique_id=1224041790]
+script = ExtResource("1_2cp0o")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1804989434]
 position = Vector2(541, 217.00002)

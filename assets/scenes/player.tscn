@@ -108,6 +108,7 @@ script = ExtResource("1_s027a")
 [node name="transition_screen" parent="." unique_id=530669612 instance=ExtResource("3_0gfpk")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1353679017]
+zoom = Vector2(5, 5)
 script = ExtResource("2_0gfpk")
 
 [node name="PlayerAnimator" type="Node2D" parent="." unique_id=1946534645 node_paths=PackedStringArray("player_controller", "animation_player", "sprite")]

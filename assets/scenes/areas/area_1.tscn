@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://co708lr0xdl7o" path="res://assets/sprites/tileset(oneway too).png" id="1_1l7dx"]
 [ext_resource type="Texture2D" uid="uid://b4q12rji0oulh" path="res://assets/sprites/background.png" id="1_d133c"]
+[ext_resource type="Script" uid="uid://b1grb8m5kryon" path="res://assets/scripts/area_1.gd" id="1_tg1fm"]
 [ext_resource type="PackedScene" uid="uid://2euqic8mde1p" path="res://assets/scenes/player.tscn" id="2_0ue7q"]
 [ext_resource type="PackedScene" uid="uid://55glsktgqkbu" path="res://assets/scenes/crawler.tscn" id="4_tbje5"]
 [ext_resource type="PackedScene" uid="uid://lxdlm407r4nm" path="res://assets/scenes/spike.tscn" id="5_jjeiq"]
@@ -329,14 +330,14 @@ sources/0 = SubResource("TileSetAtlasSource_ka6na")
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.918877, 0.247566), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_4k2ok"]
+[sub_resource type="CurveTexture" id="CurveTexture_5f0af"]
 curve = SubResource("Curve_tbje5")
 
 [sub_resource type="Gradient" id="Gradient_tbje5"]
 offsets = PackedFloat32Array(0.462069, 0.606897)
 colors = PackedColorArray(1, 1, 1, 0.584314, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_d133c"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_q28fi"]
 gradient = SubResource("Gradient_tbje5")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tbje5"]
@@ -345,14 +346,15 @@ emission_shape = 3
 emission_box_extents = Vector3(500, 0, 1)
 gravity = Vector3(45, 98, 0)
 scale_max = 2.0
-color_ramp = SubResource("GradientTexture1D_d133c")
-alpha_curve = SubResource("CurveTexture_4k2ok")
+color_ramp = SubResource("GradientTexture1D_q28fi")
+alpha_curve = SubResource("CurveTexture_5f0af")
 turbulence_enabled = true
 turbulence_noise_speed_random = 0.0
 turbulence_influence_min = 0.02
 turbulence_influence_max = 0.08
 
 [node name="area1" type="Node2D" unique_id=252212140]
+script = ExtResource("1_tg1fm")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1371364515]
 position = Vector2(107.44451, -104.50001)
