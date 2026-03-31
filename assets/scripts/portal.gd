@@ -13,6 +13,15 @@ func _ready():
 	close()
 	body_entered.connect(_on_body_entered)
 
+	Globals.spades_changed.connect(_on_spades_changed)
+
+	if Globals.spades >= 3:
+		open()
+
+func _on_spades_changed(value):
+	if value >= 3:
+		open()
+
 func open():
 	is_open = true
 	sprite.region_rect.position.x = 32
@@ -30,6 +39,8 @@ func _on_body_entered(body: Node2D) -> void:
 
 func next_level():
 	GameState.current_area += 1
+	Globals.reset_area()
+
 	var full_path = area_path + "area_" + str(GameState.current_area) + ".tscn"
 	await transition.transition()
 	await transition.on_transition_finished

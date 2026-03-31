@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cxaght1dkfyus" path="res://assets/scenes/spade.tscn" id="2_3rdar"]
 [ext_resource type="PackedScene" uid="uid://2euqic8mde1p" path="res://assets/scenes/player.tscn" id="2_hgs5c"]
 [ext_resource type="AudioStream" uid="uid://cqf0iol2j6vai" path="res://assets/better bgm.wav" id="5_oudd8"]
+[ext_resource type="PackedScene" uid="uid://c4t1rhdl1jy7o" path="res://assets/scenes/portal.tscn" id="8_qmppi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hgs5c"]
 texture = ExtResource("1_blyc0")
@@ -464,15 +465,15 @@ patrol_right_distance = 40.0
 texture_filter = 1
 position = Vector2(749, 280)
 player = NodePath("../../Player")
-patrol_left_distance = 35.0
-patrol_right_distance = 35.0
+patrol_left_distance = 20.0
+patrol_right_distance = 12.0
 
 [node name="crawler11" parent="crawlers" unique_id=589865544 node_paths=PackedStringArray("player") instance=ExtResource("1_00rug")]
 texture_filter = 1
-position = Vector2(413, 568)
+position = Vector2(416, 562)
 player = NodePath("../../Player")
-patrol_left_distance = 40.0
-patrol_right_distance = 40.0
+patrol_left_distance = 20.0
+patrol_right_distance = 20.0
 
 [node name="crawler12" parent="crawlers" unique_id=127768193 node_paths=PackedStringArray("player") instance=ExtResource("1_00rug")]
 texture_filter = 1
@@ -501,10 +502,13 @@ preprocess = 30.0
 process_material = SubResource("ParticleProcessMaterial_00rug")
 
 [node name="Player" parent="." unique_id=856797166 instance=ExtResource("2_hgs5c")]
-position = Vector2(51, 566)
+position = Vector2(60, 560)
 
 [node name="bgm" type="AudioStreamPlayer" parent="." unique_id=1485179636]
 stream = ExtResource("5_oudd8")
 autoplay = true
 bus = &"bgm"
 playback_type = 1
+
+[node name="portal" parent="." unique_id=1157732995 instance=ExtResource("8_qmppi")]
+position = Vector2(133, 528)
