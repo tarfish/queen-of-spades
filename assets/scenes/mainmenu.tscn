@@ -9,7 +9,7 @@
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mo8e2"]
 texture = ExtResource("2_mo8e2")
-modulate_color = Color(0.3779188, 0.37791887, 0.37791884, 1)
+modulate_color = Color(0.4445741, 0.5137582, 0.6873044, 1)
 
 [sub_resource type="Theme" id="Theme_tosni"]
 
@@ -120,10 +120,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -156.5
-offset_top = 23.0
-offset_right = 156.5
-offset_bottom = 231.0
+offset_left = -208.4159
+offset_top = -26.5
+offset_right = 208.4159
+offset_bottom = 250.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
@@ -370,7 +370,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_7op8g")
 text = "Tutorial"
 horizontal_alignment = 1
 
-[node name="tutorialquitbutton" type="Button" parent="tutorial" unique_id=1376723671]
+[node name="quitbutton" type="Button" parent="tutorial" unique_id=1376723671]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -395,15 +395,15 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_jm4xt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_dnk4y")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_ooe2i")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ccmni")
-text = "Back"
+text = "Quit"
 
 [node name="tutorial" type="Label" parent="tutorial" unique_id=1421187957]
 layout_mode = 0
-offset_top = 117.0
-offset_right = 1012.6666
-offset_bottom = 559.0
+offset_top = 85.0
+offset_right = 1032.0
+offset_bottom = 527.0
 theme_override_fonts/font = ExtResource("1_ccmni")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 21
 text = "Welcome to Queen of Spades!
 
 Controls: Arrow Keys to move, and Z to
@@ -413,9 +413,12 @@ Your goal is to progress to the next
 world, but a portal will stop you
 from continuing.
 
-The portal will be closed, but collecting
-three spades will open the portal for
-you.
+The portal can only be opened by collecting
+three spades scattered across the map.
+
+The darker tiles are one-way, which
+will let you phase through them by
+jumping into them from the bottom.
 Good Luck!"
 horizontal_alignment = 1
 
@@ -426,4 +429,4 @@ horizontal_alignment = 1
 [connection signal="pressed" from="options/optionsquitbutton" to="." method="_on_optionsquitbutton_pressed"]
 [connection signal="value_changed" from="options/musicvolume" to="options/musicvolume" method="_on_value_changed"]
 [connection signal="toggled" from="options/fullscreencontrol" to="options/fullscreencontrol" method="_on_toggled"]
-[connection signal="pressed" from="tutorial/tutorialquitbutton" to="." method="_on_tutorialquitbutton_pressed"]
+[connection signal="pressed" from="tutorial/quitbutton" to="." method="_on_tutorialquitbutton_pressed"]
